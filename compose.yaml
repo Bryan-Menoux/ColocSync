@@ -1,0 +1,80 @@
+# Les sources et fichiers generes restent sur ton PC via le bind mount.
+x-node-base: &node-base
+  image: colocsync-node:local
+  build:
+    context: .
+  working_dir: /workspace
+  volumes:
+    - .:/workspace
+  # Avoid mounting Windows node_modules into Linux containers.
+  init: true
+
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: colocsync
+      POSTGRES_USER: colocsync
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-colocsync_dev_local}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U colocsync -d colocsync"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  api:
+    <<: *node-base
+    volumes:
+      - .:/workspace
+      - api_node_modules:/workspace/backend/node_modules
+    restart: unless-stopped
+    working_dir: /workspace/backend
+    environment:
+      NODE_ENV: development
+      PORT: "3001"
+      DATABASE_URL: postgresql://colocsync:${POSTGRES_PASSWORD:-colocsync_dev_local}@db:5432/colocsync?schema=public
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:-}
+      BETTER_AUTH_URL: ${BETTER_AUTH_URL:-http://localhost:3001}
+      CLIENT_ORIGIN: ${CLIENT_ORIGIN:-http://localhost:8081}
+      AUTH_EMAILS_ENABLED: ${AUTH_EMAILS_ENABLED:-false}
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      AUTH_EMAIL_FROM: ${AUTH_EMAIL_FROM:-}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      APPLE_CLIENT_ID: ${APPLE_CLIENT_ID:-}
+      APPLE_CLIENT_SECRET: ${APPLE_CLIENT_SECRET:-}
+      FACEBOOK_CLIENT_ID: ${FACEBOOK_CLIENT_ID:-}
+      FACEBOOK_CLIENT_SECRET: ${FACEBOOK_CLIENT_SECRET:-}
+    ports:
+      - "3001:3001"
+    depends_on:
+      db:
+        condition: service_healthy
+    command: ["sh", "-c", "npm ci && npm run db:generate && npm run dev"]
+
+  mobile:
+    <<: *node-base
+    volumes:
+      - .:/workspace
+      - mobile_node_modules:/workspace/mobile/node_modules
+    restart: unless-stopped
+    working_dir: /workspace/mobile
+    profiles: ["docker-mobile"]
+    environment:
+      EXPO_PUBLIC_API_URL: ${EXPO_PUBLIC_API_URL:-http://localhost:3001}
+      REACT_NATIVE_PACKAGER_HOSTNAME: ${LAN_IP:-127.0.0.1}
+    ports:
+      - "8081:8081"
+    command: ["sh", "-c", "npm ci && npx expo start --lan --port 8081"]
+    depends_on:
+      - api
+
+volumes:
+  pg_data:
+  api_node_modules:
+  mobile_node_modules:
