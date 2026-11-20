@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+**/node_modules/
+**/.expo/
+**/dist/
+**/build/
+**/.DS_Store
+backend/src/generated/
+mobile/.env.local
