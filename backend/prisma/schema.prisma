@@ -1,5 +1,4 @@
-// Prisma 7. Les modeles ci-dessous servent seulement a Better Auth.
-// Ajoute ensuite tes modeles de colocation et de gestion des depenses/taches.
+// Prisma 7. Source de vérité des modèles et migrations de la base.
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
@@ -19,6 +18,36 @@ model User {
   updatedAt     DateTime
   sessions      Session[]
   accounts      Account[]
+
+  /// Nom d'utilisateur MLD; nullable jusqu'à la définition du parcours de profil.
+  username                   String?                   @unique @db.VarChar(50)
+  lastName                   String?                   @map("last_name") @db.VarChar(100)
+  firstName                  String?                   @map("first_name") @db.VarChar(100)
+  birthDate                  DateTime?                 @map("birth_date") @db.Date
+  phoneNumber                String?                   @map("phone_number") @db.VarChar(20)
+  occupation                 String?                   @db.VarChar(100)
+  citation                   String?                   @db.VarChar(255)
+  about                      String?
+  userTags                   UserTag[]
+  memberships                Membership[]
+  expensesPaid               Expense[]                 @relation("ExpensePayer")
+  expenseShares              ExpenseShare[]
+  repaymentsPaid             Repayment[]               @relation("RepaymentPayer")
+  repaymentsTo               Repayment[]               @relation("RepaymentRecipient")
+  invitationsMade            HouseInvitation[]         @relation("HouseInvitationCreatedBy")
+  tasksCreated               Task[]                    @relation("TaskCreatedBy")
+  taskAssignments            TaskAssignment[]
+  shoppingAdded              ShoppingItem[]            @relation("ShoppingItemAddedBy")
+  shoppingOwned              ShoppingItem[]            @relation("ShoppingItemOwner")
+  shoppingBought             ShoppingItem[]            @relation("ShoppingItemPurchasedBy")
+  eventsCreated              Event[]                   @relation("EventCreatedBy")
+  eventParticipations        EventParticipant[]
+  conversationsMade          Conversation[]            @relation("ConversationCreatedBy")
+  conversationParticipations ConversationParticipant[] @relation("ConversationParticipantUser")
+  messagesSent               Message[]                 @relation("MessageSender")
+  documentsUploaded          Document[]                @relation("DocumentUploader")
+  notifications              Notification[]
+  activityEntries            ActivityLog[]             @relation("ActivityLogActor")
 
   @@map("user")
 }
@@ -65,4 +94,340 @@ model Verification {
   updatedAt  DateTime?
 
   @@map("verification")
+}
+
+model House {
+  id             Int               @id @default(autoincrement())
+  name           String            @db.VarChar(100)
+  housePhotoPath String?           @map("house_photo_path")
+  country        String            @db.VarChar(255)
+  city           String            @db.VarChar(255)
+  postalCode     String            @map("postal_code") @db.VarChar(20)
+  houseAddress   String?           @map("house_address") @db.VarChar(255)
+  theme          String?           @db.VarChar(50)
+  memberships    Membership[]
+  expenses       Expense[]
+  repayments     Repayment[]
+  invitations    HouseInvitation[]
+  tasks          Task[]
+  shoppingItems  ShoppingItem[]
+  events         Event[]
+  conversations  Conversation[]
+  folders        Folder[]
+  notifications  Notification[]
+  activityLogs   ActivityLog[]
+
+  @@map("house")
+}
+
+model Tag {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique @db.VarChar(100)
+  userTags UserTag[]
+
+  @@map("tag")
+}
+
+model UserTag {
+  userId String @map("user_id")
+  tagId  Int    @map("tag_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  tag    Tag    @relation(fields: [tagId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([userId, tagId])
+  @@map("user_tag")
+}
+
+model Membership {
+  id       Int       @id @default(autoincrement())
+  userId   String    @map("user_id")
+  houseId  Int       @map("house_id")
+  role     String    @db.VarChar(20)
+  joinedAt DateTime  @default(now()) @map("joined_at") @db.Timestamptz(6)
+  leftAt   DateTime? @map("left_at") @db.Timestamptz(6)
+  user     User      @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  house    House     @relation(fields: [houseId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([userId, houseId], map: "idx_membership_user_house")
+  @@index([houseId], map: "idx_membership_house")
+  @@map("membership")
+}
+
+model Expense {
+  id          Int            @id @default(autoincrement())
+  houseId     Int            @map("house_id")
+  payerId     String         @map("payer_id")
+  title       String         @db.VarChar(255)
+  amount      Decimal        @db.Decimal(10, 2)
+  expenseDate DateTime       @map("expense_date") @db.Date
+  isPrivate   Boolean        @default(true) @map("is_private")
+  description String?
+  house       House          @relation(fields: [houseId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  payer       User           @relation("ExpensePayer", fields: [payerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  shares      ExpenseShare[]
+
+  @@index([houseId, expenseDate], map: "idx_expense_house_date")
+  @@index([payerId, expenseDate], map: "idx_expense_payer_date")
+  @@map("expense")
+}
+
+model ExpenseShare {
+  id        Int     @id @default(autoincrement())
+  expenseId Int     @map("expense_id")
+  userId    String  @map("user_id")
+  amount    Decimal @db.Decimal(10, 2)
+  expense   Expense @relation(fields: [expenseId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user      User    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([expenseId, userId], map: "uq_expense_share_expense_user")
+  @@index([userId], map: "idx_expense_share_user")
+  @@map("expense_share")
+}
+
+model Repayment {
+  id            Int      @id @default(autoincrement())
+  houseId       Int      @map("house_id")
+  payerId       String   @map("payer_id")
+  recipientId   String   @map("recipient_id")
+  amount        Decimal  @db.Decimal(10, 2)
+  repaymentDate DateTime @map("repayment_date") @db.Date
+  house         House    @relation(fields: [houseId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  payer         User     @relation("RepaymentPayer", fields: [payerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  recipient     User     @relation("RepaymentRecipient", fields: [recipientId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([houseId, repaymentDate], map: "idx_repayment_house_date")
+  @@map("repayment")
+}
+
+model HouseInvitation {
+  id          Int       @id @default(autoincrement())
+  houseId     Int       @map("house_id")
+  createdById String    @map("created_by_id")
+  tokenHash   String    @unique @map("token_hash") @db.VarChar(64)
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  expiresAt   DateTime? @map("expires_at") @db.Timestamptz(6)
+  isRevoked   Boolean   @default(false) @map("is_revoked")
+  house       House     @relation(fields: [houseId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  createdBy   User      @relation("HouseInvitationCreatedBy", fields: [createdById], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([houseId], map: "idx_house_invitation_house")
+  @@map("house_invitation")
+}
+
+model Task {
+  id          Int              @id @default(autoincrement())
+  houseId     Int              @map("house_id")
+  createdById String           @map("created_by_id")
+  title       String           @db.VarChar(160)
+  description String?
+  category    String?          @db.VarChar(80)
+  isActive    Boolean          @default(true) @map("is_active")
+  createdAt   DateTime         @default(now()) @map("created_at") @db.Timestamptz(6)
+  house       House            @relation(fields: [houseId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  createdBy   User             @relation("TaskCreatedBy", fields: [createdById], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  recurrence  TaskRecurrence?
+  assignments TaskAssignment[]
+
+  @@index([houseId], map: "idx_task_house")
+  @@map("task")
+}
+
+model TaskRecurrence {
+  id            Int       @id @default(autoincrement())
+  taskId        Int       @unique(map: "uq_task_recurrence_task") @map("task_id")
+  frequency     String    @db.VarChar(12)
+  repeatEvery   Int       @default(1) @map("repeat_every")
+  startDate     DateTime  @map("start_date") @db.Date
+  endDate       DateTime? @map("end_date") @db.Date
+  rotateMembers Boolean   @default(false) @map("rotate_members")
+  task          Task      @relation(fields: [taskId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@map("task_recurrence")
+}
+
+model TaskAssignment {
+  id          Int       @id @default(autoincrement())
+  taskId      Int       @map("task_id")
+  userId      String    @map("user_id")
+  dueAt       DateTime  @map("due_at") @db.Timestamptz(6)
+  status      String    @default("pending") @db.VarChar(12)
+  completedAt DateTime? @map("completed_at") @db.Timestamptz(6)
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  task        Task      @relation(fields: [taskId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user        User      @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([taskId, userId, dueAt], map: "uq_task_assignment_person_due")
+  @@index([userId, dueAt], map: "idx_task_assignment_due")
+  @@index([taskId], map: "idx_task_assignment_task")
+  @@map("task_assignment")
+}
+
+model ShoppingCategory {
+  id    Int            @id @default(autoincrement())
+  name  String         @unique @db.VarChar(100)
+  items ShoppingItem[]
+
+  @@map("shopping_category")
+}
+
+model ShoppingItem {
+  id            Int               @id @default(autoincrement())
+  houseId       Int               @map("house_id")
+  addedById     String            @map("added_by_id")
+  ownerId       String?           @map("owner_id")
+  categoryId    Int?              @map("category_id")
+  name          String            @db.VarChar(200)
+  quantity      Decimal           @default(1) @db.Decimal(8, 2)
+  unit          String?           @db.VarChar(30)
+  plannedFor    DateTime?         @map("planned_for") @db.Date
+  purchasedById String?           @map("purchased_by_id")
+  purchasedAt   DateTime?         @map("purchased_at") @db.Timestamptz(6)
+  createdAt     DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
+  house         House             @relation(fields: [houseId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  addedBy       User              @relation("ShoppingItemAddedBy", fields: [addedById], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  owner         User?             @relation("ShoppingItemOwner", fields: [ownerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  category      ShoppingCategory? @relation(fields: [categoryId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  purchasedBy   User?             @relation("ShoppingItemPurchasedBy", fields: [purchasedById], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([houseId, ownerId], map: "idx_shopping_house_owner")
+  @@index([categoryId], map: "idx_shopping_category")
+  @@map("shopping_item")
+}
+
+model Event {
+  id           Int                @id @default(autoincrement())
+  houseId      Int                @map("house_id")
+  createdById  String             @map("created_by_id")
+  title        String             @db.VarChar(160)
+  eventType    String             @default("event") @map("event_type") @db.VarChar(20)
+  startsAt     DateTime           @map("starts_at") @db.Timestamptz(6)
+  endsAt       DateTime?          @map("ends_at") @db.Timestamptz(6)
+  guestCount   Int                @default(0) @map("guest_count")
+  description  String?
+  createdAt    DateTime           @default(now()) @map("created_at") @db.Timestamptz(6)
+  house        House              @relation(fields: [houseId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  createdBy    User               @relation("EventCreatedBy", fields: [createdById], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  participants EventParticipant[]
+
+  @@index([houseId, startsAt], map: "idx_event_house_dates")
+  @@map("event")
+}
+
+model EventParticipant {
+  id      Int    @id @default(autoincrement())
+  eventId Int    @map("event_id")
+  userId  String @map("user_id")
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  user    User   @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([eventId, userId], map: "uq_event_participant")
+  @@index([userId], map: "idx_event_participant_user")
+  @@map("event_participant")
+}
+
+model Conversation {
+  id               Int                       @id @default(autoincrement())
+  houseId          Int                       @map("house_id")
+  createdById      String                    @map("created_by_id")
+  conversationType String                    @map("conversation_type") @db.VarChar(15)
+  name             String?                   @db.VarChar(100)
+  picturePath      String?                   @map("picture_path")
+  createdAt        DateTime                  @default(now()) @map("created_at") @db.Timestamptz(6)
+  house            House                     @relation(fields: [houseId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  createdBy        User                      @relation("ConversationCreatedBy", fields: [createdById], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  participants     ConversationParticipant[]
+  messages         Message[]
+
+  @@index([houseId], map: "idx_conversation_house")
+  @@map("conversation")
+}
+
+model ConversationParticipant {
+  id             Int          @id @default(autoincrement())
+  conversationId Int          @map("conversation_id")
+  userId         String       @map("user_id")
+  joinedAt       DateTime     @default(now()) @map("joined_at") @db.Timestamptz(6)
+  lastReadAt     DateTime?    @map("last_read_at") @db.Timestamptz(6)
+  leftAt         DateTime?    @map("left_at") @db.Timestamptz(6)
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  user           User         @relation("ConversationParticipantUser", fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([conversationId, userId], map: "uq_conversation_user")
+  @@index([userId], map: "idx_conversation_participant_user")
+  @@map("conversation_participant")
+}
+
+model Message {
+  id             Int          @id @default(autoincrement())
+  conversationId Int          @map("conversation_id")
+  senderId       String       @map("sender_id")
+  body           String?
+  attachmentPath String?      @map("attachment_path")
+  sentAt         DateTime     @default(now()) @map("sent_at") @db.Timestamptz(6)
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  sender         User         @relation("MessageSender", fields: [senderId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([conversationId, sentAt], map: "idx_message_conversation_date")
+  @@map("message")
+}
+
+model Folder {
+  id        Int        @id @default(autoincrement())
+  houseId   Int        @map("house_id")
+  name      String     @db.VarChar(150)
+  createdAt DateTime   @default(now()) @map("created_at") @db.Timestamptz(6)
+  house     House      @relation(fields: [houseId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  documents Document[]
+
+  @@unique([houseId, name], map: "uq_folder_house_name")
+  @@map("folder")
+}
+
+model Document {
+  id           Int      @id @default(autoincrement())
+  folderId     Int      @map("folder_id")
+  uploadedById String   @map("uploaded_by_id")
+  name         String   @db.VarChar(255)
+  filePath     String   @map("file_path")
+  mimeType     String   @map("mime_type") @db.VarChar(100)
+  sizeBytes    Int      @map("size_bytes")
+  uploadedAt   DateTime @default(now()) @map("uploaded_at") @db.Timestamptz(6)
+  folder       Folder   @relation(fields: [folderId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  uploadedBy   User     @relation("DocumentUploader", fields: [uploadedById], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([folderId], map: "idx_document_folder")
+  @@map("document")
+}
+
+model Notification {
+  id        Int       @id @default(autoincrement())
+  houseId   Int       @map("house_id")
+  userId    String    @map("user_id")
+  channel   String    @db.VarChar(15)
+  title     String    @db.VarChar(160)
+  body      String
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  sentAt    DateTime? @map("sent_at") @db.Timestamptz(6)
+  readAt    DateTime? @map("read_at") @db.Timestamptz(6)
+  house     House     @relation(fields: [houseId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  user      User      @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([userId, createdAt], map: "idx_notification_user_date")
+  @@map("notification")
+}
+
+model ActivityLog {
+  id         Int      @id @default(autoincrement())
+  houseId    Int      @map("house_id")
+  actorId    String?  @map("actor_id")
+  action     String   @db.VarChar(60)
+  entityType String   @map("entity_type") @db.VarChar(60)
+  entityId   Int?     @map("entity_id")
+  details    Json?
+  occurredAt DateTime @default(now()) @map("occurred_at") @db.Timestamptz(6)
+  house      House    @relation(fields: [houseId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  actor      User?    @relation("ActivityLogActor", fields: [actorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([houseId, occurredAt], map: "idx_activity_house_date")
+  @@map("activity_log")
 }

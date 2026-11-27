@@ -1,4 +1,4 @@
-# Les sources et fichiers generes restent sur ton PC via le bind mount.
+﻿# Les sources et fichiers generes restent sur ton PC via le bind mount.
 x-node-base: &node-base
   image: colocsync-node:local
   build:
@@ -39,7 +39,7 @@ services:
       PORT: "3001"
       DATABASE_URL: postgresql://colocsync:${POSTGRES_PASSWORD:-colocsync_dev_local}@db:5432/colocsync?schema=public
       BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:-}
-      BETTER_AUTH_URL: ${BETTER_AUTH_URL:-http://localhost:3001}
+      BETTER_AUTH_URL: ${BETTER_AUTH_URL:-http://localhost:3000}
       CLIENT_ORIGIN: ${CLIENT_ORIGIN:-http://localhost:8081}
       AUTH_EMAILS_ENABLED: ${AUTH_EMAILS_ENABLED:-false}
       RESEND_API_KEY: ${RESEND_API_KEY:-}
@@ -51,26 +51,57 @@ services:
       FACEBOOK_CLIENT_ID: ${FACEBOOK_CLIENT_ID:-}
       FACEBOOK_CLIENT_SECRET: ${FACEBOOK_CLIENT_SECRET:-}
     ports:
+      - "3000:3001"
+      # Le client Expo natif actuel utilise encore le port 3001.
       - "3001:3001"
     depends_on:
       db:
         condition: service_healthy
-    command: ["sh", "-c", "npm ci && npm run db:generate && npm run dev"]
+    command: ["sh", "-c", "sh ../scripts/install-node-deps.sh tsx && npm run db:generate && npm run dev"]
+
+  studio:
+    image: node:24-bookworm-slim
+    working_dir: /tmp/studio
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://colocsync:${POSTGRES_PASSWORD:-colocsync_dev_local}@db:5432/colocsync?schema=public
+    volumes:
+      - ./backend:/workspace:ro
+      - studio_node_modules:/tmp/studio/node_modules
+    command: ["sh", "-c", "mkdir -p prisma && cp /workspace/prisma.config.ts . && cp -R /workspace/prisma/. prisma/ && if [ ! -x node_modules/.bin/prisma ]; then npm install --no-save --no-package-lock --prefer-offline --no-audit --no-fund prisma@7.10.1 dotenv; fi && BROWSER=none npx prisma studio --port 5556 --browser none"]
+    ports:
+      - "127.0.0.1:5555:5555"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  studio-proxy:
+    image: node:24-alpine
+    restart: unless-stopped
+    network_mode: "service:studio"
+    volumes:
+      - ./scripts/prisma-studio-proxy.cjs:/proxy.cjs:ro
+    command: ["node", "/proxy.cjs"]
+    depends_on:
+      - studio
 
   mobile:
     <<: *node-base
     volumes:
       - .:/workspace
       - mobile_node_modules:/workspace/mobile/node_modules
-    restart: unless-stopped
     working_dir: /workspace/mobile
     profiles: ["docker-mobile"]
     environment:
-      EXPO_PUBLIC_API_URL: ${EXPO_PUBLIC_API_URL:-http://localhost:3001}
+      EXPO_PUBLIC_API_URL: ${EXPO_PUBLIC_API_URL:-http://localhost:3000}
+      CI: "false"
+      BROWSER: "none"
       REACT_NATIVE_PACKAGER_HOSTNAME: ${LAN_IP:-127.0.0.1}
+    stdin_open: true
+    tty: true
     ports:
       - "8081:8081"
-    command: ["sh", "-c", "npm ci && npx expo start --lan --port 8081"]
+    command: ["sh", "-c", "sh ../scripts/install-node-deps.sh expo && npx expo start --lan --web --port 8081"]
     depends_on:
       - api
 
@@ -78,3 +109,4 @@ volumes:
   pg_data:
   api_node_modules:
   mobile_node_modules:
+  studio_node_modules:

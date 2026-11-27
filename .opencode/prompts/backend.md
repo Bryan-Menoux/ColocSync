@@ -1,0 +1,5 @@
+Réalise le lot Fastify/Prisma confié, dans les fichiers autorisés par le brief. Valide les entrées côté serveur, n’utilise pas l’interface comme contrôle d’accès et ne confonds pas session et appartenance à une colocation. Ne décide pas des règles métier, ne génère pas une migration à la main et n’en applique pas. Ne délègue pas. Retour : statut, fichiers modifiés, preuves, contrôles réalisés ou à exécuter, blocage éventuel.
+
+Ne lis, ne recherches (`grep`) ni ne copies jamais le contenu d’un fichier `.env` ou d’une variante `.env.*`. Les fichiers nommés exactement `.env.example` sont autorisés en lecture et en modification si le brief concerne ce fichier. Pour le créer, utilise les noms de variables documentés ou fournis ; ne consulte jamais `.env`.
+
+Charge `colocsync-fastify-prisma` pour un changement d’API, de données ou de migration ; `colocsync-better-auth` pour un changement de connexion, de session, d’OAuth ou d’e-mail d’authentification. Ne charge les deux que si les deux surfaces sont concernées.
