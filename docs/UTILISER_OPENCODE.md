@@ -6,16 +6,11 @@ Guide de prise en main pour les personnes qui contribuent au projet.
 
 Sur Windows, télécharge **OpenCode Desktop** depuis [opencode.ai](https://opencode.ai/) et lance l’installateur.
 
-## 2. Connecter son compte ChatGPT
+## 2. Connecter son compte Anthropic
 
-OpenCode peut utiliser un abonnement **ChatGPT Plus ou Pro** sans clé API OpenAI :
+L’agent par défaut utilise **Claude** via Anthropic. Dans OpenCode, connecte le fournisseur Anthropic depuis **Settings → Fournisseurs**, puis suis la méthode de connexion proposée. L’accès aux modèles dépend du compte ou de l’abonnement Anthropic configuré.
 
-1. Ouvre **Settings** (l’icône d’engrenage) dans OpenCode.
-2. Va dans **Fournisseurs**, puis sélectionne **OpenAI**.
-3. Clique **Sign in with ChatGPT** et termine la connexion dans le navigateur.
-4. Reviens dans OpenCode une fois l’autorisation terminée.
-
-L’utilisation est comptabilisée dans le forfait ChatGPT lié au compte. Donc faites attention à vos quotas, j'ai paramétré les modèles pour ne pas trop consommer en utilisant des petits modèles mais ça n'empêche pas de beaucoup consommer quand les conversations durent trop longtemps. Donc si vous commencez à trop consommer, vous pouvez soit faire `/compact` soit lancer une nouvelle conversation quand vous avez terminé une fonctionnalité.
+Les conversations longues peuvent consommer davantage. Pour réduire le contexte, utilise `/compact` ou démarre une nouvelle conversation après avoir terminé une tâche.
 
 ## 3. Ouvrir le bon dossier
 
@@ -27,9 +22,11 @@ Démarre une **nouvelle conversation dans ce dossier**. OpenCode y détecte la c
 
 ## 4. Choisir l’agent ColocSync
 
-Dans le sélecteur d’agent **en bas à gauche** dans la conversation, choisis **ColocSync** (`colocsync`). C’est l’orchestrateur du projet, c'est lui qui choisit le spécialiste et le niveau d’effort appropriés. En gros c'est le chef d'équipe qui va répartir les tâches que tu lui demande entre les différents modèles. Il peut avoir un plus gros niveau d'effort car c'est lui qui va réfléchir, puis dire aux autres de juste éxecuter les ordres.
+Dans le sélecteur d’agent **en bas à gauche** dans la conversation, choisis **ColocSync-Claude** (`colocsync`). C’est l’orchestrateur du projet, propulsé par **Claude Sonnet 5.5**. Il choisit le spécialiste et le niveau d’effort appropriés. Ce profil utilise Claude, **pas GPT-6 Luna** : Luna est un modèle OpenAI.
 
-**N’utilise pas `Plan` ni `Build` pour travailler sur ColocSync.** Garde `ColocSync` sélectionné, y compris pour demander une analyse ou un plan de travail.
+Pour utiliser OpenAI à la place, sélectionne **ColocSync OpenAI** (`colocsync-openai`) dans le même sélecteur. Son orchestrateur et ses sous-agents utilisent la famille OpenAI. Changer uniquement le modèle de la conversation ne bascule pas les profils de sous-agents.
+
+**N’utilise pas `Plan` ni `Build` pour travailler sur ColocSync.** Garde l’orchestrateur voulu sélectionné, y compris pour demander une analyse ou un plan de travail.
 
 ## 5. Expliquer ce que vous voulez
 

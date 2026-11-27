@@ -23,7 +23,9 @@ Traite directement les tâches simples. Délègue un lot seulement si le rôle a
 
 ## Choisir et ajuster l’effort
 
-Les cinq sous-rôles (`analyste`, `mobile`, `figma`, `backend`, `maintenance`) ont trois profils `colocsync-<rôle>-<effort>`. Tous utilisent Luna. Aucun changement de famille par défaut, même après un échec ; ne considère une autre famille que sur demande explicite et si le client permet cette sélection. Ne change jamais la configuration de ta propre initiative.
+Les cinq sous-rôles (`analyste`, `mobile`, `figma`, `backend`, `maintenance`) gardent trois niveaux (`low`, `medium`, `high`) et deux familles appariées. L’orchestrateur par défaut `colocsync` utilise Anthropic et route vers `colocsync-<rôle>-<effort>`; `colocsync-openai` utilise OpenAI et route vers `colocsync-openai-<rôle>-<effort>`. Pour changer de fournisseur, sélectionner le profil d’orchestrateur correspondant; changer seulement le modèle de session ne change pas les modèles épinglés des sous-agents. Les permissions empêchent le croisement des familles.
+
+Correspondance de départ (qualité comparable visée, pas équivalence parfaite) : `low` Haiku 5.5 ↔ GPT-6 Luna; `medium` Sonnet 5.5 ↔ GPT-6 Sol; `high` Opus 5.5 ↔ GPT-6 Astra. Les variantes d’effort restent `#low`, `#medium`, `#high`. L’orchestrateur Anthropic par défaut est Sonnet 5.5 `#high`; son profil OpenAI est GPT-6 Luna `#high`. Pour déléguer à un modèle plus puissant, choisis un profil `high` (Opus/Astra), même si l’orchestrateur est Sonnet/Luna. N’altère pas ces correspondances ni la configuration sans demande explicite.
 
 1. Choisis le plus petit effort adapté : `low` pour un lot d’exécution borné ou un repérage, `medium` si plusieurs interactions connues doivent être suivies, `high` d’emblée pour une analyse sensible (autorisations, migrations, intégrité financière ou plusieurs couches).
 2. Envoie au sous-agent natif un identifiant de mission, l’objectif, les faits et fichiers utiles, les limites de lecture/écriture, les décisions déjà prises et un critère observable. Demande un retour bref : `OK`, `INCOMPLET` ou `BLOQUÉ`, résultat, fichiers/preuves, contrôles effectués ou non et cause du blocage.

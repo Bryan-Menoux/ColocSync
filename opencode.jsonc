@@ -1,7 +1,7 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "default_agent": "colocsync",
-  "model": "openai/gpt-6-luna",
+  "model": "anthropic/claude-sonnet-5-5",
   "mcp": {
     "servers": {
       "figma": {
@@ -31,7 +31,7 @@
     "colocsync": {
       "mode": "primary",
       "description": "Guide l’équipe et pilote le développement de ColocSync.",
-      "model": "openai/gpt-6-luna#high",
+      "model": "anthropic/claude-sonnet-5-5#high",
       "system": "{file:.opencode/prompts/orchestrateur.md}",
       "permissions": [
         { "action": "question", "resource": "*", "effect": "allow" },
@@ -108,22 +108,22 @@
       ]
     },
     "colocsync-analyste-low": {
-      "mode": "subagent", "model": "openai/gpt-6-luna#low",
+      "mode": "subagent", "model": "anthropic/claude-haiku-5-5#low",
       "description": "Repérage factuel et analyse locale, en lecture seule.",
       "system": "{file:.opencode/prompts/analyste.md}"
     },
     "colocsync-analyste-medium": {
-      "mode": "subagent", "model": "openai/gpt-6-luna#medium",
+      "mode": "subagent", "model": "anthropic/claude-sonnet-5-5#medium",
       "description": "Analyse de plusieurs fichiers ou d’un contrat, en lecture seule.",
       "system": "{file:.opencode/prompts/analyste.md}"
     },
     "colocsync-analyste-high": {
-      "mode": "subagent", "model": "openai/gpt-6-luna#high",
+      "mode": "subagent", "model": "anthropic/claude-opus-5-5#high",
       "description": "Analyse sensible ou transversale et revue indépendante, en lecture seule.",
       "system": "{file:.opencode/prompts/analyste.md}"
     },
     "colocsync-mobile-low": {
-      "mode": "subagent", "model": "openai/gpt-6-luna#low",
+      "mode": "subagent", "model": "anthropic/claude-haiku-5-5#low",
       "description": "Implémentation mobile bornée, point de départ normal.",
       "system": "{file:.opencode/prompts/mobile.md}",
       "permissions": [
@@ -134,7 +134,7 @@
       ]
     },
     "colocsync-mobile-medium": {
-      "mode": "subagent", "model": "openai/gpt-6-luna#medium",
+      "mode": "subagent", "model": "anthropic/claude-sonnet-5-5#medium",
       "description": "Implémentation mobile à plusieurs fichiers ou reprise ciblée.",
       "system": "{file:.opencode/prompts/mobile.md}",
       "permissions": [
@@ -145,7 +145,7 @@
       ]
     },
     "colocsync-mobile-high": {
-      "mode": "subagent", "model": "openai/gpt-6-luna#high",
+      "mode": "subagent", "model": "anthropic/claude-opus-5-5#high",
       "description": "Dernière tentative justifiée sur une implémentation mobile.",
       "system": "{file:.opencode/prompts/mobile.md}",
       "permissions": [
@@ -156,7 +156,7 @@
       ]
     },
     "colocsync-figma-low": {
-      "mode": "subagent", "model": "openai/gpt-6-luna#low",
+      "mode": "subagent", "model": "anthropic/claude-haiku-5-5#low",
       "description": "Analyse un frame Figma simple et remet un brief, sans modifier le code.",
       "system": "{file:.opencode/prompts/figma.md}",
       "permissions": [
@@ -171,7 +171,7 @@
       ]
     },
     "colocsync-figma-medium": {
-      "mode": "subagent", "model": "openai/gpt-6-luna#medium",
+      "mode": "subagent", "model": "anthropic/claude-sonnet-5-5#medium",
       "description": "Analyse les variantes et interactions Figma, sans modifier le code.",
       "system": "{file:.opencode/prompts/figma.md}",
       "permissions": [
@@ -186,7 +186,7 @@
       ]
     },
     "colocsync-figma-high": {
-      "mode": "subagent", "model": "openai/gpt-6-luna#high",
+      "mode": "subagent", "model": "anthropic/claude-opus-5-5#high",
       "description": "Analyse une maquette complexe ; seul profil autorisé à demander une modification Figma explicite.",
       "system": "{file:.opencode/prompts/figma.md}",
       "permissions": [
@@ -204,7 +204,7 @@
       ]
     },
     "colocsync-backend-low": {
-      "mode": "subagent", "model": "openai/gpt-6-luna#low",
+      "mode": "subagent", "model": "anthropic/claude-haiku-5-5#low",
       "description": "Implémentation serveur bornée, point de départ normal.",
       "system": "{file:.opencode/prompts/backend.md}",
       "permissions": [
@@ -217,7 +217,7 @@
       ]
     },
     "colocsync-backend-medium": {
-      "mode": "subagent", "model": "openai/gpt-6-luna#medium",
+      "mode": "subagent", "model": "anthropic/claude-sonnet-5-5#medium",
       "description": "Implémentation serveur à plusieurs fichiers ou reprise ciblée.",
       "system": "{file:.opencode/prompts/backend.md}",
       "permissions": [
@@ -230,7 +230,7 @@
       ]
     },
     "colocsync-backend-high": {
-      "mode": "subagent", "model": "openai/gpt-6-luna#high",
+      "mode": "subagent", "model": "anthropic/claude-opus-5-5#high",
       "description": "Dernière tentative justifiée sur une implémentation serveur.",
       "system": "{file:.opencode/prompts/backend.md}",
       "permissions": [
@@ -243,7 +243,7 @@
       ]
     },
     "colocsync-maintenance-low": {
-      "mode": "subagent", "model": "openai/gpt-6-luna#low",
+      "mode": "subagent", "model": "anthropic/claude-haiku-5-5#low",
       "description": "Documentation, Docker et CI : modification bornée.",
       "system": "{file:.opencode/prompts/maintenance.md}",
       "permissions": [
@@ -256,7 +256,7 @@
       ]
     },
     "colocsync-maintenance-medium": {
-      "mode": "subagent", "model": "openai/gpt-6-luna#medium",
+      "mode": "subagent", "model": "anthropic/claude-sonnet-5-5#medium",
       "description": "Documentation, Docker et CI : travail transversal ou reprise ciblée.",
       "system": "{file:.opencode/prompts/maintenance.md}",
       "permissions": [
@@ -269,7 +269,7 @@
       ]
     },
     "colocsync-maintenance-high": {
-      "mode": "subagent", "model": "openai/gpt-6-luna#high",
+      "mode": "subagent", "model": "anthropic/claude-opus-5-5#high",
       "description": "Dernière tentative justifiée sur la documentation, Docker ou la CI.",
       "system": "{file:.opencode/prompts/maintenance.md}",
       "permissions": [
@@ -279,6 +279,858 @@
         { "action": "edit", "resource": "compose.yaml", "effect": "allow" },
         { "action": "edit", "resource": "Dockerfile", "effect": "allow" },
         { "action": "edit", "resource": ".github/workflows/**", "effect": "allow" }
+      ]
+    },
+    "colocsync-openai": {
+      "mode": "primary",
+      "description": "Guide l’équipe ColocSync avec OpenAI et pilote le développement.",
+      "model": "openai/gpt-6-luna#high",
+      "system": "{file:.opencode/prompts/orchestrateur.md}",
+      "permissions": [
+        {
+          "action": "question",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "subagent",
+          "resource": "colocsync-openai-analyste-*",
+          "effect": "allow"
+        },
+        {
+          "action": "subagent",
+          "resource": "colocsync-openai-mobile-*",
+          "effect": "allow"
+        },
+        {
+          "action": "subagent",
+          "resource": "colocsync-openai-figma-*",
+          "effect": "allow"
+        },
+        {
+          "action": "subagent",
+          "resource": "colocsync-openai-backend-*",
+          "effect": "allow"
+        },
+        {
+          "action": "subagent",
+          "resource": "colocsync-openai-maintenance-*",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "mobile/src/**",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "backend/src/**",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "backend/src/generated/**",
+          "effect": "deny"
+        },
+        {
+          "action": "edit",
+          "resource": "docs/**",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "*.env.example",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git *",
+          "effect": "ask"
+        },
+        {
+          "action": "shell",
+          "resource": "git status *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git --no-pager diff --no-ext-diff --no-textconv --stat",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git --no-pager diff --no-ext-diff --no-textconv --name-only",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git --no-pager diff --no-ext-diff --no-textconv --cached --stat",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git --no-pager diff --no-ext-diff --no-textconv --cached --name-only",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git branch --show-current",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git branch --list *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git remote -v",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git rev-parse *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git ls-files *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git log --oneline",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git fetch",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git fetch origin",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "git add *",
+          "effect": "ask"
+        },
+        {
+          "action": "shell",
+          "resource": "git switch *",
+          "effect": "ask"
+        },
+        {
+          "action": "shell",
+          "resource": "git checkout *",
+          "effect": "ask"
+        },
+        {
+          "action": "shell",
+          "resource": "git commit *",
+          "effect": "ask"
+        },
+        {
+          "action": "shell",
+          "resource": "git commit --no-verify*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git commit -n*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git merge *",
+          "effect": "ask"
+        },
+        {
+          "action": "shell",
+          "resource": "git pull *",
+          "effect": "ask"
+        },
+        {
+          "action": "shell",
+          "resource": "git push *",
+          "effect": "ask"
+        },
+        {
+          "action": "shell",
+          "resource": "git restore *",
+          "effect": "ask"
+        },
+        {
+          "action": "shell",
+          "resource": "git rm *",
+          "effect": "ask"
+        },
+        {
+          "action": "shell",
+          "resource": "git config *",
+          "effect": "ask"
+        },
+        {
+          "action": "shell",
+          "resource": "git rebase *",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git reset *",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git clean *",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git -c *",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git --config-env*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git checkout --*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git branch -D*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git branch --delete*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git push --force*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git push -f*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git push * --force*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git push * -f*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git push * +*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git push * --delete*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git push * :*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git push * --mirror*",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git worktree remove *",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "git update-ref *",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "gh *",
+          "effect": "ask"
+        },
+        {
+          "action": "shell",
+          "resource": "gh repo view *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "gh pr list *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "gh pr view *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "gh issue list *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "gh issue view *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "gh run list *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "gh run view *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "gh status *",
+          "effect": "allow"
+        },
+        {
+          "action": "shell",
+          "resource": "gh auth *",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "gh secret *",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "gh repo delete *",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "gh repo archive *",
+          "effect": "deny"
+        },
+        {
+          "action": "shell",
+          "resource": "npm run lint",
+          "effect": "ask"
+        },
+        {
+          "action": "shell",
+          "resource": "npm run typecheck",
+          "effect": "ask"
+        },
+        {
+          "action": "shell",
+          "resource": "npx --no-install tsc --noEmit",
+          "effect": "ask"
+        }
+      ]
+    },
+    "colocsync-openai-analyste-low": {
+      "mode": "subagent",
+      "model": "openai/gpt-6-luna#low",
+      "description": "Repérage factuel et analyse locale, en lecture seule. (OpenAI)",
+      "system": "{file:.opencode/prompts/analyste.md}"
+    },
+    "colocsync-openai-analyste-medium": {
+      "mode": "subagent",
+      "model": "openai/gpt-6-sol#medium",
+      "description": "Analyse de plusieurs fichiers ou d’un contrat, en lecture seule. (OpenAI)",
+      "system": "{file:.opencode/prompts/analyste.md}"
+    },
+    "colocsync-openai-analyste-high": {
+      "mode": "subagent",
+      "model": "openai/gpt-6-astra#high",
+      "description": "Analyse sensible ou transversale et revue indépendante, en lecture seule. (OpenAI)",
+      "system": "{file:.opencode/prompts/analyste.md}"
+    },
+    "colocsync-openai-mobile-low": {
+      "mode": "subagent",
+      "model": "openai/gpt-6-luna#low",
+      "description": "Implémentation mobile bornée, point de départ normal. (OpenAI)",
+      "system": "{file:.opencode/prompts/mobile.md}",
+      "permissions": [
+        {
+          "action": "edit",
+          "resource": "mobile/src/**",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "*.env.example",
+          "effect": "allow"
+        },
+        {
+          "action": "skill",
+          "resource": "design-taste-frontend",
+          "effect": "allow"
+        },
+        {
+          "action": "skill",
+          "resource": "colocsync-expo",
+          "effect": "allow"
+        }
+      ]
+    },
+    "colocsync-openai-mobile-medium": {
+      "mode": "subagent",
+      "model": "openai/gpt-6-sol#medium",
+      "description": "Implémentation mobile à plusieurs fichiers ou reprise ciblée. (OpenAI)",
+      "system": "{file:.opencode/prompts/mobile.md}",
+      "permissions": [
+        {
+          "action": "edit",
+          "resource": "mobile/src/**",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "*.env.example",
+          "effect": "allow"
+        },
+        {
+          "action": "skill",
+          "resource": "design-taste-frontend",
+          "effect": "allow"
+        },
+        {
+          "action": "skill",
+          "resource": "colocsync-expo",
+          "effect": "allow"
+        }
+      ]
+    },
+    "colocsync-openai-mobile-high": {
+      "mode": "subagent",
+      "model": "openai/gpt-6-astra#high",
+      "description": "Dernière tentative justifiée sur une implémentation mobile. (OpenAI)",
+      "system": "{file:.opencode/prompts/mobile.md}",
+      "permissions": [
+        {
+          "action": "edit",
+          "resource": "mobile/src/**",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "*.env.example",
+          "effect": "allow"
+        },
+        {
+          "action": "skill",
+          "resource": "design-taste-frontend",
+          "effect": "allow"
+        },
+        {
+          "action": "skill",
+          "resource": "colocsync-expo",
+          "effect": "allow"
+        }
+      ]
+    },
+    "colocsync-openai-figma-low": {
+      "mode": "subagent",
+      "model": "openai/gpt-6-luna#low",
+      "description": "Analyse un frame Figma simple et remet un brief, sans modifier le code. (OpenAI)",
+      "system": "{file:.opencode/prompts/figma.md}",
+      "permissions": [
+        {
+          "action": "edit",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "skill",
+          "resource": "design-taste-frontend",
+          "effect": "allow"
+        },
+        {
+          "action": "opencode_read_mcp_resources",
+          "resource": "figma:skill://figma/figma-design-to-code/SKILL.md",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_whoami",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_create_session",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_get_metadata",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_get_design_context",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_get_screenshot",
+          "resource": "*",
+          "effect": "allow"
+        }
+      ]
+    },
+    "colocsync-openai-figma-medium": {
+      "mode": "subagent",
+      "model": "openai/gpt-6-sol#medium",
+      "description": "Analyse les variantes et interactions Figma, sans modifier le code. (OpenAI)",
+      "system": "{file:.opencode/prompts/figma.md}",
+      "permissions": [
+        {
+          "action": "edit",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "skill",
+          "resource": "design-taste-frontend",
+          "effect": "allow"
+        },
+        {
+          "action": "opencode_read_mcp_resources",
+          "resource": "figma:skill://figma/figma-design-to-code/SKILL.md",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_whoami",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_create_session",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_get_metadata",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_get_design_context",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_get_screenshot",
+          "resource": "*",
+          "effect": "allow"
+        }
+      ]
+    },
+    "colocsync-openai-figma-high": {
+      "mode": "subagent",
+      "model": "openai/gpt-6-astra#high",
+      "description": "Analyse une maquette complexe ; seul profil autorisé à demander une modification Figma explicite. (OpenAI)",
+      "system": "{file:.opencode/prompts/figma.md}",
+      "permissions": [
+        {
+          "action": "edit",
+          "resource": "*",
+          "effect": "deny"
+        },
+        {
+          "action": "skill",
+          "resource": "design-taste-frontend",
+          "effect": "allow"
+        },
+        {
+          "action": "opencode_read_mcp_resources",
+          "resource": "figma:skill://figma/figma-design-to-code/SKILL.md",
+          "effect": "allow"
+        },
+        {
+          "action": "opencode_read_mcp_resources",
+          "resource": "figma:skill://figma/figma-use/SKILL.md",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_whoami",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_create_session",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_get_metadata",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_get_design_context",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_get_screenshot",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_search_design_system",
+          "resource": "*",
+          "effect": "allow"
+        },
+        {
+          "action": "figma_use_figma",
+          "resource": "*",
+          "effect": "ask"
+        }
+      ]
+    },
+    "colocsync-openai-backend-low": {
+      "mode": "subagent",
+      "model": "openai/gpt-6-luna#low",
+      "description": "Implémentation serveur bornée, point de départ normal. (OpenAI)",
+      "system": "{file:.opencode/prompts/backend.md}",
+      "permissions": [
+        {
+          "action": "skill",
+          "resource": "colocsync-fastify-prisma",
+          "effect": "allow"
+        },
+        {
+          "action": "skill",
+          "resource": "colocsync-better-auth",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "backend/src/**",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "*.env.example",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "backend/src/generated/**",
+          "effect": "deny"
+        },
+        {
+          "action": "edit",
+          "resource": "backend/prisma/schema.prisma",
+          "effect": "allow"
+        }
+      ]
+    },
+    "colocsync-openai-backend-medium": {
+      "mode": "subagent",
+      "model": "openai/gpt-6-sol#medium",
+      "description": "Implémentation serveur à plusieurs fichiers ou reprise ciblée. (OpenAI)",
+      "system": "{file:.opencode/prompts/backend.md}",
+      "permissions": [
+        {
+          "action": "skill",
+          "resource": "colocsync-fastify-prisma",
+          "effect": "allow"
+        },
+        {
+          "action": "skill",
+          "resource": "colocsync-better-auth",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "backend/src/**",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "*.env.example",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "backend/src/generated/**",
+          "effect": "deny"
+        },
+        {
+          "action": "edit",
+          "resource": "backend/prisma/schema.prisma",
+          "effect": "allow"
+        }
+      ]
+    },
+    "colocsync-openai-backend-high": {
+      "mode": "subagent",
+      "model": "openai/gpt-6-astra#high",
+      "description": "Dernière tentative justifiée sur une implémentation serveur. (OpenAI)",
+      "system": "{file:.opencode/prompts/backend.md}",
+      "permissions": [
+        {
+          "action": "skill",
+          "resource": "colocsync-fastify-prisma",
+          "effect": "allow"
+        },
+        {
+          "action": "skill",
+          "resource": "colocsync-better-auth",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "backend/src/**",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "*.env.example",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "backend/src/generated/**",
+          "effect": "deny"
+        },
+        {
+          "action": "edit",
+          "resource": "backend/prisma/schema.prisma",
+          "effect": "allow"
+        }
+      ]
+    },
+    "colocsync-openai-maintenance-low": {
+      "mode": "subagent",
+      "model": "openai/gpt-6-luna#low",
+      "description": "Documentation, Docker et CI : modification bornée. (OpenAI)",
+      "system": "{file:.opencode/prompts/maintenance.md}",
+      "permissions": [
+        {
+          "action": "edit",
+          "resource": "README.md",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "docs/**",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "*.env.example",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "compose.yaml",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "Dockerfile",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": ".github/workflows/**",
+          "effect": "allow"
+        }
+      ]
+    },
+    "colocsync-openai-maintenance-medium": {
+      "mode": "subagent",
+      "model": "openai/gpt-6-sol#medium",
+      "description": "Documentation, Docker et CI : travail transversal ou reprise ciblée. (OpenAI)",
+      "system": "{file:.opencode/prompts/maintenance.md}",
+      "permissions": [
+        {
+          "action": "edit",
+          "resource": "README.md",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "docs/**",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "*.env.example",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "compose.yaml",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "Dockerfile",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": ".github/workflows/**",
+          "effect": "allow"
+        }
+      ]
+    },
+    "colocsync-openai-maintenance-high": {
+      "mode": "subagent",
+      "model": "openai/gpt-6-astra#high",
+      "description": "Dernière tentative justifiée sur la documentation, Docker ou la CI. (OpenAI)",
+      "system": "{file:.opencode/prompts/maintenance.md}",
+      "permissions": [
+        {
+          "action": "edit",
+          "resource": "README.md",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "docs/**",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "*.env.example",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "compose.yaml",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": "Dockerfile",
+          "effect": "allow"
+        },
+        {
+          "action": "edit",
+          "resource": ".github/workflows/**",
+          "effect": "allow"
+        }
       ]
     }
   }
