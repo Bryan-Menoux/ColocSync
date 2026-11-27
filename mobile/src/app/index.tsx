@@ -27,7 +27,8 @@ export default function LoginScreen() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (session?.user) router.replace('/account');
+    if (session?.user?.emailVerified) router.replace('/account');
+    else if (session?.user) router.replace('/verify-email');
   }, [router, session?.user]);
 
   async function signIn() {
@@ -52,7 +53,10 @@ export default function LoginScreen() {
         setError(friendlyAuthError(authError, 'Connexion impossible. Vérifiez vos identifiants puis réessayez.'));
         return;
       }
-      router.replace('/account');
+      const { data: current } = await authClient.getSession();
+      router.replace(current?.user && !current.user.emailVerified
+        ? { pathname: '/verify-email', params: { email: email.trim() } }
+        : '/account');
     } catch {
       setError('Service de connexion indisponible. Réessayez plus tard.');
     } finally {

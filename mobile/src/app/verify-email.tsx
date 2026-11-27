@@ -1,6 +1,6 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
 import { AuthButton, AuthLayout, AuthMessage, AuthLink, authColors } from '../components/auth-ui';
 import { authClient } from '../lib/auth-client';
@@ -29,9 +29,12 @@ export default function VerifyEmailScreen() {
     setBusy(true);
     setMessage('');
     try {
+      const callbackURL = Platform.OS === 'web'
+        ? (typeof window !== 'undefined' ? `${window.location.origin}/verified` : '/verified')
+        : 'colocsync:///verified';
       const result = await authClient.sendVerificationEmail({
         email,
-        callbackURL: 'colocsync:///verified',
+        callbackURL,
       });
       setError(Boolean(result.error));
       setMessage(result.error

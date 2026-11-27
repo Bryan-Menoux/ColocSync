@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
@@ -26,7 +26,9 @@ export default function ForgotPasswordScreen() {
     try {
       const result = await authClient.requestPasswordReset({
         email: email.trim(),
-        redirectTo: 'colocsync:///reset-password',
+        redirectTo: Platform.OS === 'web'
+          ? (typeof window !== 'undefined' ? `${window.location.origin}/reset-password` : '/reset-password')
+          : 'colocsync:///reset-password',
       });
       setError(Boolean(result.error));
       setMessage(result.error

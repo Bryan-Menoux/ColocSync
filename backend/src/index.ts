@@ -8,6 +8,14 @@ import { prisma } from "./lib/prisma";
 
 const app = Fastify({ logger: true });
 const port = Number(process.env.PORT ?? 3001);
+const emailNotVerified = () => ({ error: "EMAIL_NOT_VERIFIED" });
+const getSession = (headers: Parameters<typeof fromNodeHeaders>[0]) =>
+  auth.api.getSession({ headers: fromNodeHeaders(headers) });
+const isEmailVerified = async (headers: Parameters<typeof fromNodeHeaders>[0]) => {
+  if (!authEmailDeliveryEnabled) return true;
+  const session = await getSession(headers);
+  return !session || session.user.emailVerified;
+};
 
 await app.register(cors, {
   origin: [process.env.CLIENT_ORIGIN ?? "http://localhost:8081"],
@@ -32,7 +40,11 @@ app.get("/api/auth/config", async () => ({ emailDeliveryEnabled: authEmailDelive
 
 // La route est volontairement ouverte pour tester la connexion WS.
 // Les futurs evenements de colocation devront verifier la session et les permissions.
-app.get("/ws", { websocket: true }, (socket) => {
+app.get("/ws", { websocket: true }, async (socket, request) => {
+  if (!(await isEmailVerified(request.headers))) {
+    socket.close(1008, "EMAIL_NOT_VERIFIED");
+    return;
+  }
   socket.send(JSON.stringify({ type: "connected", app: "ColocSync" }));
   socket.on("message", (data) => {
     if (data.toString() === "ping") socket.send("pong");
@@ -44,6 +56,17 @@ app.route({
   method: ["GET", "POST"],
   url: "/api/auth/*",
   async handler(request, reply) {
+    if (authEmailDeliveryEnabled) {
+      const urlPath = new URL(request.url, `http://${request.headers.host ?? `localhost:${port}`}`).pathname;
+      const allowed = new Set([
+        "GET /api/auth/get-session", "POST /api/auth/get-session",
+        "GET /api/auth/verify-email", "POST /api/auth/send-verification-email",
+        "POST /api/auth/sign-out",
+      ]);
+      if (!allowed.has(`${request.method} ${urlPath}`) && !(await isEmailVerified(request.headers))) {
+        return reply.code(403).send(emailNotVerified());
+      }
+    }
     const host = request.headers.host ?? `localhost:${port}`;
     const url = new URL(request.url, `http://${host}`);
     const headers = fromNodeHeaders(request.headers);
@@ -66,10 +89,9 @@ app.route({
 });
 
 app.get("/api/me", async (request, reply) => {
-  const session = await auth.api.getSession({
-    headers: fromNodeHeaders(request.headers),
-  });
+  const session = await getSession(request.headers);
   if (!session) return reply.code(401).send({ error: "Non authentifie" });
+  if (authEmailDeliveryEnabled && !session.user.emailVerified) return reply.code(403).send(emailNotVerified());
   return session;
 });
 

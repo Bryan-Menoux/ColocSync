@@ -1,9 +1,18 @@
 import { useRouter } from 'expo-router';
+import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { AuthButton, AuthLayout, authColors } from '../components/auth-ui';
+import { authClient } from '../lib/auth-client';
 
 export default function VerifiedScreen() {
   const router = useRouter();
+  useEffect(() => {
+    let active = true;
+    void authClient.getSession().then(({ data }) => {
+      if (active && data?.user?.emailVerified) router.replace('/account');
+    });
+    return () => { active = false; };
+  }, [router]);
   return (
     <AuthLayout>
       <Text style={styles.eyebrow}>COLOCSYNC</Text>

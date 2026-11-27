@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -43,13 +43,16 @@ export default function RegisterScreen() {
     setBusy(true);
     setError('');
     try {
+      const callbackURL = Platform.OS === 'web'
+        ? (typeof window !== 'undefined' ? `${window.location.origin}/verified` : '/verified')
+        : 'colocsync:///verified';
       const { error: authError } = await authClient.signUp.email({
         name: name.trim(),
         email: email.trim(),
         password,
-        callbackURL: 'colocsync:///verified',
+        callbackURL,
         fetchOptions: {
-          body: { name: name.trim(), email: email.trim(), password, callbackURL: 'colocsync:///verified', rememberMe },
+          body: { name: name.trim(), email: email.trim(), password, callbackURL, rememberMe },
         },
       });
       if (authError) {
@@ -57,6 +60,12 @@ export default function RegisterScreen() {
         return;
       }
       if (authConfig.data.emailDeliveryEnabled) {
+        const { data: session } = await authClient.getSession();
+        if (!session?.user) {
+          setError('Compte créé, mais la session de vérification est indisponible. Connectez-vous pour continuer.');
+          router.replace({ pathname: '/verify-email', params: { email: email.trim() } });
+          return;
+        }
         router.replace({ pathname: '/verify-email', params: { email: email.trim() } });
       } else {
         router.replace('/account');

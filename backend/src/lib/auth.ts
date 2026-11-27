@@ -60,7 +60,7 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, { provider: "postgresql" }),
   emailAndPassword: {
     enabled: true,
-    requireEmailVerification: authEmailDeliveryEnabled,
+    requireEmailVerification: false,
     revokeSessionsOnPasswordReset: true,
     sendResetPassword: async ({ user, url }) => {
       return sendAuthEmail({
@@ -86,7 +86,7 @@ export const auth = betterAuth({
       });
     },
     sendOnSignUp: authEmailDeliveryEnabled,
-    sendOnSignIn: authEmailDeliveryEnabled,
+    sendOnSignIn: false,
     autoSignInAfterVerification: true,
     expiresIn: 3600,
   },
