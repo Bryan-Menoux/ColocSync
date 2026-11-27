@@ -13,7 +13,6 @@
 | Persistance | Prisma · PostgreSQL | Accès typé, migrations et stockage |
 | Temps réel | WebSocket | Diffusion des changements |
 | Notifications | Expo Notifications | Notifications push |
-| Intelligence artificielle | API IA | Suggestions via le backend |
 | Langage | TypeScript | Typage du mobile et du backend |
 | Développement | Docker · Git · GitHub | Environnement local et versionnement |
 
@@ -27,13 +26,11 @@ flowchart TB
     prisma["Accès aux données<br/>Prisma"]
     db[(PostgreSQL)]
     auth["Authentification<br/>Better Auth"]
-    ia["API IA"]
     push["Notifications push<br/>Expo Notifications"]
 
     mobile <-->|REST| api
     api --> prisma --> db
     api --- auth
-    api --> ia
     api --> push
 
     classDef client fill:#1e3a5f,stroke:#60a5fa,color:#eff6ff
@@ -43,7 +40,7 @@ flowchart TB
     class mobile client
     class api server
     class prisma,db data
-    class auth,ia,push service
+    class auth,push service
     linkStyle default stroke:#cbd5e1,stroke-width:2px
 ```
 
@@ -123,11 +120,9 @@ flowchart TB
 %%{init: {"theme":"dark","flowchart":{"curve":"linear","nodeSpacing":30,"rankSpacing":40},"themeVariables":{"lineColor":"#cbd5e1","fontFamily":"system-ui"}}}%%
 flowchart LR
     backend["Backend Fastify"]
-    ia["API IA"]
     push["Service push Expo"]
     mobile["Application mobile<br/>Expo Notifications"]
 
-    backend <-->|Suggestions| ia
     backend --> push --> mobile
 
     classDef client fill:#1e3a5f,stroke:#60a5fa,color:#eff6ff
@@ -135,6 +130,6 @@ flowchart LR
     classDef service fill:#302340,stroke:#c084fc,color:#faf5ff
     class mobile client
     class backend server
-    class ia,push service
+    class push service
     linkStyle default stroke:#cbd5e1,stroke-width:2px
 ```

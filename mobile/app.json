@@ -22,7 +22,7 @@
       "bundler": "metro"
     },
     "plugins": [
-      "expo-router",
+      ["expo-router", { "apiRoutes": true }],
       [
         "expo-splash-screen",
         {

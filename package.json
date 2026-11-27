@@ -1,0 +1,7 @@
+{
+  "name": "colocsync",
+  "private": true,
+  "scripts": {
+    "dev": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/start-dev.ps1"
+  }
+}

@@ -7,6 +7,5 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workspace
-ENV CI=1
 EXPOSE 3001 8081
 CMD ["bash"]

@@ -68,3 +68,42 @@ Tu n’as pas besoin de connaître les commandes Git, tu peux répondre simpleme
 Comme le tout sera potentiellement géré par OpenCode, il est important de penser à lui demander de faire un commit de temps en temps pour que tu puisses revenir à un état précédent si il y a le moindre problème. Tu peux lui demander de faire un commit à tout moment, il te demandera un message de commit et fera le commit pour toi.
 
 **Ajouter un changement à `main` ne signifie pas forcément que l’application est publiée aux utilisateurs.** Cela dépend de la façon dont le projet sera déployé. À ce moment là, si vous ne savez vraiment pas comment le déployer, venez me voir, je pourrais vous aider à le faire.
+
+## 8. Installer Docker Desktop et lancer le projet
+
+Docker Desktop fournit l’environnement Linux isolé du projet : PostgreSQL, l’API, Expo et Prisma Studio tournent dans des conteneurs. Node.js est nécessaire uniquement pour lancer `npm run dev` ; PostgreSQL reste dans Docker.
+
+### Installer Docker Desktop (Windows)
+
+1. Installe [Node.js LTS](https://nodejs.org/) et [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+2. Dans l’installateur Docker, garde le backend **WSL 2** proposé par défaut.
+3. Redémarre Windows si demandé, lance **Docker Desktop** et attends que le moteur soit démarré.
+
+### Première initialisation
+
+Connecte le PC au réseau du téléphone (Wi-Fi ou hotspot), ouvre PowerShell à la racine de `ColocSync`, puis lance :
+
+```powershell
+npm run dev
+```
+
+La commande crée `.env` depuis l’exemple s’il manque, détecte l’IPv4 de la route active, la transmet à Docker Compose et démarre les services. Le premier lancement installe les dépendances ; les suivants réutilisent les volumes et ne réinstallent que si un `package-lock.json` change. Pour arrêter les services, appuie sur `Ctrl+C`.
+
+### Accéder aux services
+
+Ouvre les services pendant que le script tourne :
+   - API : http://localhost:3000/api/health
+   - Application web sur le PC : http://localhost:8081
+   - Prisma Studio : http://localhost:5555
+
+`Ctrl+C` arrête les conteneurs sans supprimer les données. `docker compose down -v` supprimerait la base locale.
+
+### Ouvrir l’application sur un téléphone
+
+1. Installe **Expo Go** depuis le Play Store ou l’App Store.
+2. Connecte le téléphone et le PC au même réseau, par exemple en activant le hotspot du téléphone puis en connectant le PC dessus.
+3. Scanne avec Expo Go le QR affiché dans le terminal.
+
+Le script redétecte l’adresse à chaque lancement, y compris après un changement de Wi-Fi ou de hotspot. La communication via hotspot dépend du modèle et des réglages du téléphone. Si Expo Go ne se connecte pas, vérifie aussi l’autorisation de Docker Desktop dans le pare-feu Windows.
+
+Le navigateur et l’app Expo Go utilisent le même serveur de développement. L’API est publiée sur `localhost:3000` pour le navigateur ; le client mobile actuel utilise aussi le port `3001`, conservé pour compatibilité. Prisma Studio est accessible uniquement sur le PC à `localhost:5555`.

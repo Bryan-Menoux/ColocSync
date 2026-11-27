@@ -1,0 +1,3551 @@
+{
+  "tables": [
+    {
+      "id": "63ZHg5aQo8apazBQfaSlV",
+      "name": "User",
+      "x": 70,
+      "y": 135,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "6L49DpT5IIwcv0Ba6S5fm"
+        },
+        {
+          "id": "G_XVV3AzArhTu6vmfDK4u",
+          "name": "last_name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "Facultatif : non demande pendant l inscription initiale.",
+          "size": 100,
+          "values": []
+        },
+        {
+          "id": "7O8Q0Snx1NPgXhJ1qoFdL",
+          "name": "first_name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "Facultatif : non demande pendant l inscription initiale.",
+          "size": 100,
+          "values": []
+        },
+        {
+          "id": "0wICitsgy-sB_LBY5u4g-",
+          "name": "birth_date",
+          "type": "DATE",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "L age du profil est calcule a partir de la date de naissance.",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "dkk_lrLVZzpYXk3pFjSOE",
+          "name": "username",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 50,
+          "values": []
+        },
+        {
+          "id": "3oNtrZRaIVd7wr87JWdll",
+          "name": "email",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 255,
+          "values": []
+        },
+        {
+          "id": "Qsk2hjduUZtFQAHy4FFyB",
+          "name": "profile_picture_path",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "U73QLfP7RlQK1nndz71fB",
+          "name": "password_hash",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "Hash du mot de passe (jamais le mot de passe en clair). A revoir si authentification sociale implementée.",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "DXe1hLc2arXRIA5pHPuwN",
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "g1eixJdP4JS1MCNg9sTO8",
+          "name": "updated_at",
+          "type": "TIMESTAMPTZ",
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "Doit etre actualise lors des modifications par le serveur / ORM.",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "APVdZHEq6yvi4vFg28c56",
+          "name": "phone_number",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": 20
+        },
+        {
+          "id": "7OqA6wNNr3maNqzMuBKZw",
+          "name": "email_verified",
+          "type": "BOOLEAN",
+          "default": "FALSE",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "aLY2XAx02bT_BwsvVt7y_",
+          "name": "occupation",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": 100
+        },
+        {
+          "id": "VTBjX74m52QtdjivsLlBh",
+          "name": "citation",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": 255
+        },
+        {
+          "id": "rNh6uOwy1kjoI4AcDwMeF",
+          "name": "about",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#ff5252",
+      "collapsed": false,
+      "width": 295
+    },
+    {
+      "id": "eZZqMUzIwWtdCqAccefbo",
+      "name": "House",
+      "x": 1580,
+      "y": 135,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "CfayN4b3RyWjZZ_TWy71j"
+        },
+        {
+          "id": "mulm01wUg8-_n-dXeuFXT",
+          "name": "name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 100
+        },
+        {
+          "id": "58yHRSLchh7e4bHVhnndH",
+          "name": "house_photo_path",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "yHojigU9I0XttZZgIfgOO",
+          "name": "country",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 255
+        },
+        {
+          "id": "9kLIOL-gjzxF0jBH6BQl2",
+          "name": "city",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 255
+        },
+        {
+          "id": "gFEQn6lVyUbxdEuaUYGEu",
+          "name": "postal_code",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 20
+        },
+        {
+          "id": "hACx6Fw_9ufj12ksoCwmZ",
+          "name": "house_address",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": 255
+        },
+        {
+          "id": "_NMb0u7CJu4Y4gXC6Gfis",
+          "name": "theme",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": 50
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#ef9bfa",
+      "collapsed": false,
+      "width": 379
+    },
+    {
+      "id": "E1QYoKlOM5PlOZjUyMVOj",
+      "name": "Tag",
+      "x": 500,
+      "y": 135,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "7rzUI8RfEPYvvLGaFLl-F"
+        },
+        {
+          "id": "lwTNg74s1NM81parw5ZXm",
+          "name": "name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 100
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#9386eb",
+      "collapsed": false
+    },
+    {
+      "id": "hGoXq5l_KqRDOAEUszy-w",
+      "name": "UserTag",
+      "x": 860,
+      "y": 175,
+      "locked": false,
+      "fields": [
+        {
+          "id": "smW5XYguSFgU35gB8bUcU",
+          "name": "user_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": [],
+          "isArray": false
+        },
+        {
+          "id": "_9TNSVT7G8GZ9MqeS8AqP",
+          "name": "tag_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#9386eb",
+      "collapsed": false,
+      "inherits": []
+    },
+    {
+      "id": "fZ3qPcOnPqeEV00x5LOrI",
+      "name": "Membership",
+      "x": 1190,
+      "y": 135,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "uaCexynomYipcaNLYULFU"
+        },
+        {
+          "id": "3j3Zuqc_xgeWoymGA6Ahd",
+          "name": "user_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "woBI9FZjgbajcLycMGNKy",
+          "name": "house_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "yPN3ZRpi-m6Bpj-xvtbsy",
+          "name": "role",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 20
+        },
+        {
+          "id": "ArMeAKtOgH9xFPqF-MhA0",
+          "name": "joined_at",
+          "type": "TIMESTAMPTZ",
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "wrqz0pQHqXNkFVdNfHUr3",
+          "name": "left_at",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "left_at IS NULL OR left_at >= joined_at",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Plusieurs adhesions historiques possibles. Ajouter un index UNIQUE partiel sur (user_id,house_id) WHERE left_at IS NULL lors de la migration SQL.",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_membership_user_house",
+          "unique": false,
+          "fields": [
+            "3j3Zuqc_xgeWoymGA6Ahd",
+            "woBI9FZjgbajcLycMGNKy"
+          ]
+        },
+        {
+          "id": 1,
+          "name": "idx_membership_house",
+          "unique": false,
+          "fields": [
+            "woBI9FZjgbajcLycMGNKy"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#ef9bfa",
+      "collapsed": false
+    },
+    {
+      "id": "DtJaxKaaxqhLlOFtBouYA",
+      "name": "Expense",
+      "x": 85,
+      "y": 1120,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "f3YgeaXaxh1ma3Cvr-yE-"
+        },
+        {
+          "id": "eJKYbYRcMh-AsTML00me4",
+          "name": "house_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "02fqOEnkfsVK8Y3WjspH_",
+          "name": "payer_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "7ccQcz9dIn3sgFmZnRlle",
+          "name": "title",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 255
+        },
+        {
+          "id": "iT3vgMa07spZk6dRn2L2x",
+          "name": "amount",
+          "type": "DECIMAL",
+          "default": "",
+          "check": "amount > 0",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "10,2"
+        },
+        {
+          "id": "cwRu1u1_ov918dcpFaS8v",
+          "name": "expense_date",
+          "type": "DATE",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "mrjVrIBEb-AcMdQL2-HN1",
+          "name": "is_private",
+          "type": "BOOLEAN",
+          "default": "TRUE",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "TRUE : visible uniquement par le payeur. FALSE : visible par les membres de la colocation.",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "TGHCAdotM-6EJNwjLS3cy",
+          "name": "description",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "is_private = TRUE pour depense personnelle. Controles d acces a la bonne colocation obligatoires cote serveur.",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_expense_house_date",
+          "unique": false,
+          "fields": [
+            "eJKYbYRcMh-AsTML00me4",
+            "cwRu1u1_ov918dcpFaS8v"
+          ]
+        },
+        {
+          "id": 1,
+          "name": "idx_expense_payer_date",
+          "unique": false,
+          "fields": [
+            "02fqOEnkfsVK8Y3WjspH_",
+            "cwRu1u1_ov918dcpFaS8v"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#83f26b",
+      "collapsed": false
+    },
+    {
+      "id": "dW0TVac4MUnmyfmXfWhXD",
+      "name": "ExpenseShare",
+      "x": 480,
+      "y": 1120,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "HwmOFJRDhKagZLaBCXsPr"
+        },
+        {
+          "id": "GXFeVxZfl78ROOaFD7jDx",
+          "name": "expense_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "1ntIir_aM_7qogPp_BjRJ",
+          "name": "user_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "nR4W6CUnkZ1w73MjMe0rz",
+          "name": "amount",
+          "type": "DECIMAL",
+          "default": "",
+          "check": "amount > 0",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "10,2"
+        }
+      ],
+      "comment": "Une part par membre et par depense. Le backend controle somme des parts = montant et aucun partage pour une depense privee.",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_expense_share_user",
+          "unique": false,
+          "fields": [
+            "1ntIir_aM_7qogPp_BjRJ"
+          ]
+        }
+      ],
+      "uniqueConstraints": [
+        {
+          "id": 0,
+          "name": "uq_expense_share_expense_user",
+          "fields": [
+            "GXFeVxZfl78ROOaFD7jDx",
+            "1ntIir_aM_7qogPp_BjRJ"
+          ]
+        }
+      ],
+      "color": "#83f26b",
+      "collapsed": false
+    },
+    {
+      "id": "naC33sDcPKQxs_bAF_vNS",
+      "name": "Repayment",
+      "x": 820,
+      "y": 1120,
+      "locked": false,
+      "fields": [
+        {
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "unsigned": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "id": "am0uDQxBM8Hp9JcKCMNwT"
+        },
+        {
+          "id": "GwIEZuWBOQf7XYsUDWaDW",
+          "name": "house_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "G3U6LN9TcSPB74K_NP0ki",
+          "name": "payer_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "0TepBT-zM_mRRFmd_cKb1",
+          "name": "recipient_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "recipient_id <> payer_id",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "J7wRxOfFjyD9SBRGv4s7L",
+          "name": "amount",
+          "type": "DECIMAL",
+          "default": "",
+          "check": "amount > 0",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "10,2"
+        },
+        {
+          "id": "5yH0CV2uNE8ki9Z453yU9",
+          "name": "repayment_date",
+          "type": "DATE",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Dette GLOBALE : aucun lien a ExpenseShare. Enregistrer uniquement les vrais transferts d argent, pas les compensations automatiques.",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_repayment_house_date",
+          "unique": false,
+          "fields": [
+            "GwIEZuWBOQf7XYsUDWaDW",
+            "5yH0CV2uNE8ki9Z453yU9"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#83f26b",
+      "collapsed": false
+    },
+    {
+      "id": "CS_4df90f5e8ee1ee53eae",
+      "name": "HouseInvitation",
+      "x": 1578.379275540924,
+      "y": 520.7928002704621,
+      "locked": false,
+      "fields": [
+        {
+          "id": "CS_c26b51d90ecfaa7759b",
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_2337a49251616cba915",
+          "name": "house_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_589961717ebf07017f3",
+          "name": "created_by_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_2d0de4c9cde02f8c6b0",
+          "name": "token_hash",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "Hachage du code/lien d invitation, jamais le jeton brut.",
+          "size": 64,
+          "values": []
+        },
+        {
+          "id": "CS_1085ffb556cd3d7048b",
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_929fa957ba06f96be87",
+          "name": "expires_at",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_f30fdeac94b8e119177",
+          "name": "is_revoked",
+          "type": "BOOLEAN",
+          "default": "FALSE",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "OPTION / support : lien ou code pour rejoindre une colocation. Codes a verifier cote serveur.",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_house_invitation_house",
+          "unique": false,
+          "fields": [
+            "CS_2337a49251616cba915"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#e562fc",
+      "collapsed": false,
+      "width": 340
+    },
+    {
+      "id": "CS_38a8c719d44e9e2b7fe",
+      "name": "Task",
+      "x": 1270,
+      "y": 1120,
+      "locked": false,
+      "fields": [
+        {
+          "id": "CS_f096238381bbe5922cb",
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_abe52720b2f49e77994",
+          "name": "house_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_379340025282686c10b",
+          "name": "created_by_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_4ef17b9390ece0d8adb",
+          "name": "title",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 160,
+          "values": []
+        },
+        {
+          "id": "CS_2dc3648da1ae7b0a5cb",
+          "name": "description",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_53328d0dd691c8ba2cb",
+          "name": "category",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": 80,
+          "values": []
+        },
+        {
+          "id": "CS_da78858af19fe252515",
+          "name": "is_active",
+          "type": "BOOLEAN",
+          "default": "TRUE",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_34a42287007524dd75b",
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Definition d une tache menagere. Les echeances et leurs responsables sont dans TaskAssignment.",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_task_house",
+          "unique": false,
+          "fields": [
+            "CS_abe52720b2f49e77994"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#f2c852",
+      "collapsed": false,
+      "width": 340
+    },
+    {
+      "id": "CS_f336719692a25333873",
+      "name": "TaskRecurrence",
+      "x": 2060,
+      "y": 1120,
+      "locked": false,
+      "fields": [
+        {
+          "id": "CS_1faeda4175d089cca22",
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_e1ed5608167468cf4fd",
+          "name": "task_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_7a1ff03cd1f7dd2a7d1",
+          "name": "frequency",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "frequency IN ('daily','weekly','monthly')",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 12,
+          "values": []
+        },
+        {
+          "id": "CS_73bc043016763dc87c9",
+          "name": "repeat_every",
+          "type": "INTEGER",
+          "default": "1",
+          "check": "repeat_every > 0",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_22c1d7ecc5a6b2521d9",
+          "name": "start_date",
+          "type": "DATE",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_2fd4ae67a3cbd0e4d16",
+          "name": "end_date",
+          "type": "DATE",
+          "default": "",
+          "check": "end_date IS NULL OR end_date >= start_date",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_5a2b8712ecd16ddc2a3",
+          "name": "rotate_members",
+          "type": "BOOLEAN",
+          "default": "FALSE",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "Rappel : la rotation effective est effectuee dans la logique applicative.",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Regle facultative de repetition pour une tache (une seule regle par Task).",
+      "indices": [],
+      "uniqueConstraints": [
+        {
+          "id": 0,
+          "name": "uq_task_recurrence_task",
+          "fields": [
+            "CS_e1ed5608167468cf4fd"
+          ]
+        }
+      ],
+      "color": "#f2c852",
+      "collapsed": false,
+      "width": 340
+    },
+    {
+      "id": "CS_f2c148cf9e2bc2a323f",
+      "name": "TaskAssignment",
+      "x": 1670,
+      "y": 1120,
+      "locked": false,
+      "fields": [
+        {
+          "id": "CS_1fe63ed2b657001a2fd",
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_8f7f3dff7321f2f20c4",
+          "name": "task_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_e4a0ad244cbb4bf8457",
+          "name": "user_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_97566ee684c8c372d8d",
+          "name": "due_at",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_20e5d5d278e5addbff4",
+          "name": "status",
+          "type": "VARCHAR",
+          "default": "'pending'",
+          "check": "status IN ('pending','completed','skipped')",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 12,
+          "values": []
+        },
+        {
+          "id": "CS_139ffb5deccb251c1d5",
+          "name": "completed_at",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "Date reelle de realisation de la tache.",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_7a9405aaf64177e6ab3",
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Une ligne par membre assigne et par occurrence. Plusieurs membres peuvent avoir la meme tache a la meme date.",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_task_assignment_due",
+          "unique": false,
+          "fields": [
+            "CS_e4a0ad244cbb4bf8457",
+            "CS_97566ee684c8c372d8d"
+          ]
+        },
+        {
+          "id": 1,
+          "name": "idx_task_assignment_task",
+          "unique": false,
+          "fields": [
+            "CS_8f7f3dff7321f2f20c4"
+          ]
+        }
+      ],
+      "uniqueConstraints": [
+        {
+          "id": 0,
+          "name": "uq_task_assignment_person_due",
+          "fields": [
+            "CS_8f7f3dff7321f2f20c4",
+            "CS_e4a0ad244cbb4bf8457",
+            "CS_97566ee684c8c372d8d"
+          ]
+        }
+      ],
+      "color": "#f2c852",
+      "collapsed": false,
+      "width": 340
+    },
+    {
+      "id": "CS_4c52a1f930a7f7041dc",
+      "name": "ShoppingCategory",
+      "x": 2485.5383038791656,
+      "y": 1128.2491893998526,
+      "locked": false,
+      "fields": [
+        {
+          "id": "CS_bfed0fa07c38616f134",
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_f3c1ed44fcfffba35a7",
+          "name": "name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 100,
+          "values": []
+        }
+      ],
+      "comment": "Categorie reutilisable pour les courses (epicerie, entretien, frais, etc.).",
+      "indices": [],
+      "uniqueConstraints": [],
+      "color": "#95fce6",
+      "collapsed": false,
+      "width": 340
+    },
+    {
+      "id": "CS_9a08e6923cbbc03399b",
+      "name": "ShoppingItem",
+      "x": 2950.0130195466827,
+      "y": 1106.4804819168594,
+      "locked": false,
+      "fields": [
+        {
+          "id": "CS_063a485b4d234533af9",
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_0a6b1303398273d53c2",
+          "name": "house_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_10766769c0316d32cb4",
+          "name": "added_by_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_dcb6f03683374f486b7",
+          "name": "owner_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "NULL : courses communes ; non NULL : liste personnelle de cet utilisateur.",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_d24fb2679d08d83ab0a",
+          "name": "category_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_d4bcb4e0f3d0e922f9c",
+          "name": "name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 200,
+          "values": []
+        },
+        {
+          "id": "CS_fe879b7953dfd68af58",
+          "name": "quantity",
+          "type": "DECIMAL",
+          "default": "1",
+          "check": "quantity > 0",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "8,2",
+          "values": []
+        },
+        {
+          "id": "CS_5457e1f183b1f055ed7",
+          "name": "unit",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": 30,
+          "values": []
+        },
+        {
+          "id": "CS_be049742d86b167b366",
+          "name": "planned_for",
+          "type": "DATE",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_048adfafb29524ccfe1",
+          "name": "purchased_by_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_ab1ec79640abbc8a7d8",
+          "name": "purchased_at",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_592b0899ad48517e185",
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Article de courses. purchased_at renseigne quand achete. L actualisation temps reel se fait dans le backend.",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_shopping_house_owner",
+          "unique": false,
+          "fields": [
+            "CS_0a6b1303398273d53c2",
+            "CS_dcb6f03683374f486b7"
+          ]
+        },
+        {
+          "id": 1,
+          "name": "idx_shopping_category",
+          "unique": false,
+          "fields": [
+            "CS_d24fb2679d08d83ab0a"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#95fce6",
+      "collapsed": false,
+      "width": 340
+    },
+    {
+      "id": "CS_a284548a18159802763",
+      "name": "Event",
+      "x": 3465.916306642771,
+      "y": 1114.946099609249,
+      "locked": false,
+      "fields": [
+        {
+          "id": "CS_eb3faffcab56a6eb96c",
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_07683149c787eb313f5",
+          "name": "house_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_ed631c26fb877e4b7c9",
+          "name": "created_by_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_af9c7c50e23a792c068",
+          "name": "title",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 160,
+          "values": []
+        },
+        {
+          "id": "CS_6e06318f8eb6199a060",
+          "name": "event_type",
+          "type": "VARCHAR",
+          "default": "'event'",
+          "check": "event_type IN ('event','absence','guest_visit')",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 20,
+          "values": []
+        },
+        {
+          "id": "CS_e5a6f4db2531ddfed40",
+          "name": "starts_at",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_1af3680f83537904fc9",
+          "name": "ends_at",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "ends_at IS NULL OR ends_at >= starts_at",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_08079f730f52d613d8c",
+          "name": "guest_count",
+          "type": "INTEGER",
+          "default": "0",
+          "check": "guest_count >= 0",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_4e2d737fe98da9b28d5",
+          "name": "description",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_900d06d84c7bb1cb5c8",
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Evenement commun, absence ou venue d invites. Les taches/courses ne sont pas dupliquees dans cette table.",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_event_house_dates",
+          "unique": false,
+          "fields": [
+            "CS_07683149c787eb313f5",
+            "CS_e5a6f4db2531ddfed40"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#9adcfc",
+      "collapsed": false,
+      "width": 340
+    },
+    {
+      "id": "CS_ff0222ee72044bd433c",
+      "name": "EventParticipant",
+      "x": 3875.916306642771,
+      "y": 1114.946099609249,
+      "locked": false,
+      "fields": [
+        {
+          "id": "CS_d6ea91fae1cd871e388",
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_4e88f760bdad69b9132",
+          "name": "event_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_fe43755ed9079237c39",
+          "name": "user_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Association entre evenement/absence et colocataire(s) concerne(s).",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_event_participant_user",
+          "unique": false,
+          "fields": [
+            "CS_fe43755ed9079237c39"
+          ]
+        }
+      ],
+      "uniqueConstraints": [
+        {
+          "id": 0,
+          "name": "uq_event_participant",
+          "fields": [
+            "CS_4e88f760bdad69b9132",
+            "CS_fe43755ed9079237c39"
+          ]
+        }
+      ],
+      "color": "#9adcfc",
+      "collapsed": false,
+      "width": 340
+    },
+    {
+      "id": "CS_70b8a9a85d37edb2756",
+      "name": "Conversation",
+      "x": 64.13832199546488,
+      "y": 1959.092970521542,
+      "locked": false,
+      "fields": [
+        {
+          "id": "CS_1dd78a3b25d2ce0ea78",
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_353f87a5c6c72d40b70",
+          "name": "house_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_f79ac9be4330e5b1250",
+          "name": "created_by_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_14607bd1cfad1686d27",
+          "name": "conversation_type",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "conversation_type IN ('direct', 'house', 'group')",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "direct : exactement 2 personnes ; group : groupe privé de membres choisis ; house : discussion commune à la colocation. Les règles de participation sont vérifiées côté serveur.",
+          "size": 15,
+          "values": []
+        },
+        {
+          "id": "CS_99047b075bb442a69c4b",
+          "name": "name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "Nom facultatif, surtout utile pour les groupes privés. Une conversation directe peut rester sans nom.",
+          "size": 100,
+          "values": []
+        },
+        {
+          "id": "CS_4c3851e9c57944c5ae7f",
+          "name": "picture_path",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "Photo facultative de la conversation, notamment pour les groupes privés.",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_d52f0926c7e2fe3c65c",
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Conversation de type direct (2 participants), group (groupe privé aux participants sélectionnés) ou house (groupe commun de la colocation). Un groupe privé demeure lié à sa House mais n’est visible que par ses membres actifs.",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_conversation_house",
+          "unique": false,
+          "fields": [
+            "CS_353f87a5c6c72d40b70"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#fc92a8",
+      "collapsed": false,
+      "width": 340
+    },
+    {
+      "id": "CS_d8ee4684fedcb6d44ad",
+      "name": "ConversationParticipant",
+      "x": 491.7913832199546,
+      "y": 1960,
+      "locked": false,
+      "fields": [
+        {
+          "id": "CS_530ee2e8fb85f4a321c",
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_4fa9784ce1ba75e7471",
+          "name": "conversation_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_6cdb1b81b9e709ea605",
+          "name": "user_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_91ad4194dc37be0097d",
+          "name": "joined_at",
+          "type": "TIMESTAMPTZ",
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_d2fb617072561ac71a4",
+          "name": "last_read_at",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_4c9512907a3a47cc85da",
+          "name": "left_at",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "NULL = participation active. Renseigné quand la personne quitte un groupe ou la colocation.",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Association utilisateur/conversation ; participants actifs quand left_at IS NULL. Ajouter seulement des membres autorisés de la House ; réactiver l’adhésion en réinitialisant left_at.",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_conversation_participant_user",
+          "unique": false,
+          "fields": [
+            "CS_6cdb1b81b9e709ea605"
+          ]
+        }
+      ],
+      "uniqueConstraints": [
+        {
+          "id": 0,
+          "name": "uq_conversation_user",
+          "fields": [
+            "CS_4fa9784ce1ba75e7471",
+            "CS_6cdb1b81b9e709ea605"
+          ]
+        }
+      ],
+      "color": "#fc92a8",
+      "collapsed": false,
+      "width": 340
+    },
+    {
+      "id": "CS_8687499dadebe9cc372",
+      "name": "Message",
+      "x": 907.6757369614512,
+      "y": 1960.907029478458,
+      "locked": false,
+      "fields": [
+        {
+          "id": "CS_ddaf3c5646d77090ca2",
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_aab8856d4039f48fa3b",
+          "name": "conversation_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_43a69790a22ab3acaa2",
+          "name": "sender_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_eef8fab31a7ef16f5f4",
+          "name": "body",
+          "type": "TEXT",
+          "default": "",
+          "check": "(body IS NOT NULL AND length(btrim(body)) > 0) OR attachment_path IS NOT NULL",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "Facultatif si un fichier/image est joint.",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_4146293e65966ee3147",
+          "name": "attachment_path",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "Chemin du fichier stocke hors base, s il y a une image.",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_f9e4565575d6a4ca425",
+          "name": "sent_at",
+          "type": "TIMESTAMPTZ",
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Message texte ou image. Verifier dans le back-end que l expediteur appartient a la conversation.",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_message_conversation_date",
+          "unique": false,
+          "fields": [
+            "CS_aab8856d4039f48fa3b",
+            "CS_f9e4565575d6a4ca425"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#fc92a8",
+      "collapsed": false,
+      "width": 340
+    },
+    {
+      "id": "CS_acf2085df6c0f0e2131",
+      "name": "Folder",
+      "x": 1334.3612312100909,
+      "y": 1930.3010260084086,
+      "locked": false,
+      "fields": [
+        {
+          "id": "CS_85940e703d18588ec14",
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_e53c264873c1ff40136",
+          "name": "house_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_45b985bf07b58d017e5",
+          "name": "name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 150,
+          "values": []
+        },
+        {
+          "id": "CS_b283a2b591b14330194",
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Dossier thematique de documents de colocation (loyer, assurance, energie...).",
+      "indices": [],
+      "uniqueConstraints": [
+        {
+          "id": 0,
+          "name": "uq_folder_house_name",
+          "fields": [
+            "CS_e53c264873c1ff40136",
+            "CS_45b985bf07b58d017e5"
+          ]
+        }
+      ],
+      "color": "#eafa57",
+      "collapsed": false,
+      "width": 340
+    },
+    {
+      "id": "CS_e78043a405bccbb11db",
+      "name": "Document",
+      "x": 1759.3093246904857,
+      "y": 1945.458164509302,
+      "locked": false,
+      "fields": [
+        {
+          "id": "CS_c1c2bbeeb6e79d84d2c",
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_426470170ae6c0d7528",
+          "name": "folder_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_dbf27f6341a447785e2",
+          "name": "uploaded_by_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_a20053f60d9a38c2d38",
+          "name": "name",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 255,
+          "values": []
+        },
+        {
+          "id": "CS_05bfa5aaaeaaa108acd",
+          "name": "file_path",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_350c341dc19e017d738",
+          "name": "mime_type",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 100,
+          "values": []
+        },
+        {
+          "id": "CS_cbd23042643d67fab16",
+          "name": "size_bytes",
+          "type": "INTEGER",
+          "default": "",
+          "check": "size_bytes >= 0",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_dea0b87689b123997af",
+          "name": "uploaded_at",
+          "type": "TIMESTAMPTZ",
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Metadonnees de fichier partage. Les octets du fichier sont stockes dans un espace prive securise.",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_document_folder",
+          "unique": false,
+          "fields": [
+            "CS_426470170ae6c0d7528"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#eafa57",
+      "collapsed": false,
+      "width": 340
+    },
+    {
+      "id": "CS_c212f445604e833ca85",
+      "name": "Notification",
+      "x": 2230,
+      "y": 1960,
+      "locked": false,
+      "fields": [
+        {
+          "id": "CS_ee372928977848fc840",
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_6caae842e5ed10e52ab",
+          "name": "house_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_82d17c1ac1d244c3054",
+          "name": "user_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_b7714d0fbc1646fce4a",
+          "name": "channel",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "channel IN ('in_app','email','push')",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 15,
+          "values": []
+        },
+        {
+          "id": "CS_96f379a17d31cde0357",
+          "name": "title",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 160,
+          "values": []
+        },
+        {
+          "id": "CS_a4b82af86c32b92872a",
+          "name": "body",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_6f394576273b8a50cce",
+          "name": "created_at",
+          "type": "TIMESTAMPTZ",
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_13769be33df07d0f6ed",
+          "name": "sent_at",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_6987cc3cf3c68636ca1",
+          "name": "read_at",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Notification a un membre. L envoi email/push depend d un service applicatif externe.",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_notification_user_date",
+          "unique": false,
+          "fields": [
+            "CS_82d17c1ac1d244c3054",
+            "CS_6f394576273b8a50cce"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#d7d8d9",
+      "collapsed": false,
+      "width": 340
+    },
+    {
+      "id": "CS_4e031e14cdd563b7ae8",
+      "name": "ActivityLog",
+      "x": 2640,
+      "y": 1960,
+      "locked": false,
+      "fields": [
+        {
+          "id": "CS_a28c16e1ee61f553886",
+          "name": "id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": true,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_ea585b2bd94efc0b38c",
+          "name": "house_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_1cda5e3e9ef46e6a8b5",
+          "name": "actor_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "NULL pour une action realisee par le systeme.",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_9eac117acc8f2e13879",
+          "name": "action",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": 60,
+          "values": []
+        },
+        {
+          "id": "CS_bc858c3b5a91b44c33e",
+          "name": "entity_type",
+          "type": "VARCHAR",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "Type d entite touchee, ex: task, expense, shopping_item.",
+          "size": 60,
+          "values": []
+        },
+        {
+          "id": "CS_808a0569e0356b851a9",
+          "name": "entity_id",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "Identifiant indicatif, non associe a une FK (journal multitype).",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_d960b4c28a2a3b5225f",
+          "name": "details",
+          "type": "JSONB",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "Details utiles pour l historique, sans donnees privees inutiles.",
+          "size": "",
+          "values": []
+        },
+        {
+          "id": "CS_989fd0a9186aee934e0",
+          "name": "occurred_at",
+          "type": "TIMESTAMPTZ",
+          "default": "CURRENT_TIMESTAMP",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "Historique des actions du groupe. Pour finance, conserver depenses et remboursements meme si un membre quitte la colocation.",
+      "indices": [
+        {
+          "id": 0,
+          "name": "idx_activity_house_date",
+          "unique": false,
+          "fields": [
+            "CS_ea585b2bd94efc0b38c",
+            "CS_989fd0a9186aee934e0"
+          ]
+        }
+      ],
+      "uniqueConstraints": [],
+      "color": "#d7d8d9",
+      "collapsed": false,
+      "width": 340
+    }
+  ],
+  "notes": [],
+  "views": [],
+  "pan": {
+    "x": 2045.9264951943346,
+    "y": 1440.9460942165133
+  },
+  "zoom": 0.35894236464095247,
+  "relationships": [
+    {
+      "startTableId": "hGoXq5l_KqRDOAEUszy-w",
+      "startFieldId": "smW5XYguSFgU35gB8bUcU",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "smW5XYguSFgU35gB8bUcU",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_UserTag_user_id_User",
+      "color": "#808080",
+      "id": "xfUaDz9SUvUrqznk8gXFF"
+    },
+    {
+      "startTableId": "hGoXq5l_KqRDOAEUszy-w",
+      "startFieldId": "_9TNSVT7G8GZ9MqeS8AqP",
+      "endTableId": "E1QYoKlOM5PlOZjUyMVOj",
+      "endFieldId": "7rzUI8RfEPYvvLGaFLl-F",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "_9TNSVT7G8GZ9MqeS8AqP",
+          "endFieldId": "7rzUI8RfEPYvvLGaFLl-F"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_UserTag_tag_id_Tag",
+      "color": "#808080",
+      "id": "r7ivSeG2yrf6XU0rP_A6y"
+    },
+    {
+      "startTableId": "fZ3qPcOnPqeEV00x5LOrI",
+      "startFieldId": "3j3Zuqc_xgeWoymGA6Ahd",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "3j3Zuqc_xgeWoymGA6Ahd",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_Membership_user_id_User",
+      "color": "#808080",
+      "id": "qvwmb76Smijy42i6Qi1be"
+    },
+    {
+      "startTableId": "fZ3qPcOnPqeEV00x5LOrI",
+      "startFieldId": "woBI9FZjgbajcLycMGNKy",
+      "endTableId": "eZZqMUzIwWtdCqAccefbo",
+      "endFieldId": "CfayN4b3RyWjZZ_TWy71j",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "woBI9FZjgbajcLycMGNKy",
+          "endFieldId": "CfayN4b3RyWjZZ_TWy71j"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_Membership_house_id_House",
+      "color": "#808080",
+      "id": "VkvvsihhlGcxjoHkKoc6Z"
+    },
+    {
+      "startTableId": "DtJaxKaaxqhLlOFtBouYA",
+      "startFieldId": "eJKYbYRcMh-AsTML00me4",
+      "endTableId": "eZZqMUzIwWtdCqAccefbo",
+      "endFieldId": "CfayN4b3RyWjZZ_TWy71j",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "eJKYbYRcMh-AsTML00me4",
+          "endFieldId": "CfayN4b3RyWjZZ_TWy71j"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_Expense_house_id_House",
+      "color": "#808080",
+      "id": "R9nNi9wn7D9LwNr5VB2cF"
+    },
+    {
+      "startTableId": "DtJaxKaaxqhLlOFtBouYA",
+      "startFieldId": "02fqOEnkfsVK8Y3WjspH_",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "02fqOEnkfsVK8Y3WjspH_",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_Expense_payer_id_User",
+      "color": "#808080",
+      "id": "0h7Czf3yT-_-YcC7njSE2"
+    },
+    {
+      "startTableId": "dW0TVac4MUnmyfmXfWhXD",
+      "startFieldId": "GXFeVxZfl78ROOaFD7jDx",
+      "endTableId": "DtJaxKaaxqhLlOFtBouYA",
+      "endFieldId": "f3YgeaXaxh1ma3Cvr-yE-",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "GXFeVxZfl78ROOaFD7jDx",
+          "endFieldId": "f3YgeaXaxh1ma3Cvr-yE-"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_ExpenseShare_expense_id_Expense",
+      "color": "#808080",
+      "id": "w19tYydZPadsBa6yph_Y2"
+    },
+    {
+      "startTableId": "dW0TVac4MUnmyfmXfWhXD",
+      "startFieldId": "1ntIir_aM_7qogPp_BjRJ",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "1ntIir_aM_7qogPp_BjRJ",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_ExpenseShare_user_id_User",
+      "color": "#808080",
+      "id": "oT9iYgl-Lbs_GJukcrpVp"
+    },
+    {
+      "startTableId": "naC33sDcPKQxs_bAF_vNS",
+      "startFieldId": "GwIEZuWBOQf7XYsUDWaDW",
+      "endTableId": "eZZqMUzIwWtdCqAccefbo",
+      "endFieldId": "CfayN4b3RyWjZZ_TWy71j",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "GwIEZuWBOQf7XYsUDWaDW",
+          "endFieldId": "CfayN4b3RyWjZZ_TWy71j"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_Repayment_house_id_House",
+      "color": "#808080",
+      "id": "38sskrRClM9f2JglSom0v"
+    },
+    {
+      "startTableId": "naC33sDcPKQxs_bAF_vNS",
+      "startFieldId": "G3U6LN9TcSPB74K_NP0ki",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "G3U6LN9TcSPB74K_NP0ki",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_Repayment_payer_id_User",
+      "color": "#808080",
+      "id": "60EVpRCBWD1LyvOm657mc"
+    },
+    {
+      "startTableId": "naC33sDcPKQxs_bAF_vNS",
+      "startFieldId": "0TepBT-zM_mRRFmd_cKb1",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "0TepBT-zM_mRRFmd_cKb1",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "fk_Repayment_recipient_id_User",
+      "color": "#808080",
+      "id": "-qxbqITlSN2QMNv7vFm81"
+    },
+    {
+      "id": "CS_8f10e225010e6c949c0",
+      "name": "fk_HouseInvitation_house_id_House",
+      "startTableId": "CS_4df90f5e8ee1ee53eae",
+      "startFieldId": "CS_2337a49251616cba915",
+      "endTableId": "eZZqMUzIwWtdCqAccefbo",
+      "endFieldId": "CfayN4b3RyWjZZ_TWy71j",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_2337a49251616cba915",
+          "endFieldId": "CfayN4b3RyWjZZ_TWy71j"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_d1fde5118b537216611",
+      "name": "fk_HouseInvitation_created_by_id_User",
+      "startTableId": "CS_4df90f5e8ee1ee53eae",
+      "startFieldId": "CS_589961717ebf07017f3",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_589961717ebf07017f3",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_efa504acf9d9dfa94ad",
+      "name": "fk_Task_house_id_House",
+      "startTableId": "CS_38a8c719d44e9e2b7fe",
+      "startFieldId": "CS_abe52720b2f49e77994",
+      "endTableId": "eZZqMUzIwWtdCqAccefbo",
+      "endFieldId": "CfayN4b3RyWjZZ_TWy71j",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_abe52720b2f49e77994",
+          "endFieldId": "CfayN4b3RyWjZZ_TWy71j"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_81fe36e4d5fedc76930",
+      "name": "fk_Task_created_by_id_User",
+      "startTableId": "CS_38a8c719d44e9e2b7fe",
+      "startFieldId": "CS_379340025282686c10b",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_379340025282686c10b",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_d6668ee8ce7915f4fbd",
+      "name": "fk_TaskRecurrence_task_id_Task",
+      "startTableId": "CS_f336719692a25333873",
+      "startFieldId": "CS_e1ed5608167468cf4fd",
+      "endTableId": "CS_38a8c719d44e9e2b7fe",
+      "endFieldId": "CS_f096238381bbe5922cb",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_e1ed5608167468cf4fd",
+          "endFieldId": "CS_f096238381bbe5922cb"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_94c1ba8beab99db4b43",
+      "name": "fk_TaskAssignment_task_id_Task",
+      "startTableId": "CS_f2c148cf9e2bc2a323f",
+      "startFieldId": "CS_8f7f3dff7321f2f20c4",
+      "endTableId": "CS_38a8c719d44e9e2b7fe",
+      "endFieldId": "CS_f096238381bbe5922cb",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_8f7f3dff7321f2f20c4",
+          "endFieldId": "CS_f096238381bbe5922cb"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_5a0a1fc18918744887c",
+      "name": "fk_TaskAssignment_user_id_User",
+      "startTableId": "CS_f2c148cf9e2bc2a323f",
+      "startFieldId": "CS_e4a0ad244cbb4bf8457",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_e4a0ad244cbb4bf8457",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_134fb5a57734c8124c2",
+      "name": "fk_ShoppingItem_house_id_House",
+      "startTableId": "CS_9a08e6923cbbc03399b",
+      "startFieldId": "CS_0a6b1303398273d53c2",
+      "endTableId": "eZZqMUzIwWtdCqAccefbo",
+      "endFieldId": "CfayN4b3RyWjZZ_TWy71j",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_0a6b1303398273d53c2",
+          "endFieldId": "CfayN4b3RyWjZZ_TWy71j"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_00f6b6b0074e33e0362",
+      "name": "fk_ShoppingItem_added_by_id_User",
+      "startTableId": "CS_9a08e6923cbbc03399b",
+      "startFieldId": "CS_10766769c0316d32cb4",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_10766769c0316d32cb4",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_10fd16a702b9056a505",
+      "name": "fk_ShoppingItem_owner_id_User",
+      "startTableId": "CS_9a08e6923cbbc03399b",
+      "startFieldId": "CS_dcb6f03683374f486b7",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_dcb6f03683374f486b7",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_b21cbd2ab2b28815d7d",
+      "name": "fk_ShoppingItem_category_id_ShoppingCategory",
+      "startTableId": "CS_9a08e6923cbbc03399b",
+      "startFieldId": "CS_d24fb2679d08d83ab0a",
+      "endTableId": "CS_4c52a1f930a7f7041dc",
+      "endFieldId": "CS_bfed0fa07c38616f134",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_d24fb2679d08d83ab0a",
+          "endFieldId": "CS_bfed0fa07c38616f134"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_35d543f1ae72c1ffa0b",
+      "name": "fk_ShoppingItem_purchased_by_id_User",
+      "startTableId": "CS_9a08e6923cbbc03399b",
+      "startFieldId": "CS_048adfafb29524ccfe1",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_048adfafb29524ccfe1",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_78bf82402ba4c7e7e02",
+      "name": "fk_Event_house_id_House",
+      "startTableId": "CS_a284548a18159802763",
+      "startFieldId": "CS_07683149c787eb313f5",
+      "endTableId": "eZZqMUzIwWtdCqAccefbo",
+      "endFieldId": "CfayN4b3RyWjZZ_TWy71j",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_07683149c787eb313f5",
+          "endFieldId": "CfayN4b3RyWjZZ_TWy71j"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_6856d359109665b2ded",
+      "name": "fk_Event_created_by_id_User",
+      "startTableId": "CS_a284548a18159802763",
+      "startFieldId": "CS_ed631c26fb877e4b7c9",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_ed631c26fb877e4b7c9",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_e2fbb6351a09cc14b9c",
+      "name": "fk_EventParticipant_event_id_Event",
+      "startTableId": "CS_ff0222ee72044bd433c",
+      "startFieldId": "CS_4e88f760bdad69b9132",
+      "endTableId": "CS_a284548a18159802763",
+      "endFieldId": "CS_eb3faffcab56a6eb96c",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_4e88f760bdad69b9132",
+          "endFieldId": "CS_eb3faffcab56a6eb96c"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_93f8d74b2281f1b507e",
+      "name": "fk_EventParticipant_user_id_User",
+      "startTableId": "CS_ff0222ee72044bd433c",
+      "startFieldId": "CS_fe43755ed9079237c39",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_fe43755ed9079237c39",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_547a8d4f73e10f4c129",
+      "name": "fk_Conversation_house_id_House",
+      "startTableId": "CS_70b8a9a85d37edb2756",
+      "startFieldId": "CS_353f87a5c6c72d40b70",
+      "endTableId": "eZZqMUzIwWtdCqAccefbo",
+      "endFieldId": "CfayN4b3RyWjZZ_TWy71j",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_353f87a5c6c72d40b70",
+          "endFieldId": "CfayN4b3RyWjZZ_TWy71j"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_382e93e6f3570ea2cea",
+      "name": "fk_Conversation_created_by_id_User",
+      "startTableId": "CS_70b8a9a85d37edb2756",
+      "startFieldId": "CS_f79ac9be4330e5b1250",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_f79ac9be4330e5b1250",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_b8eec030d105cdfbf71",
+      "name": "fk_ConversationParticipant_conversation_id_Conversation",
+      "startTableId": "CS_d8ee4684fedcb6d44ad",
+      "startFieldId": "CS_4fa9784ce1ba75e7471",
+      "endTableId": "CS_70b8a9a85d37edb2756",
+      "endFieldId": "CS_1dd78a3b25d2ce0ea78",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_4fa9784ce1ba75e7471",
+          "endFieldId": "CS_1dd78a3b25d2ce0ea78"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_dcbadcfed4163c3520c",
+      "name": "fk_ConversationParticipant_user_id_User",
+      "startTableId": "CS_d8ee4684fedcb6d44ad",
+      "startFieldId": "CS_6cdb1b81b9e709ea605",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_6cdb1b81b9e709ea605",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_534fa3bc4c6724c0346",
+      "name": "fk_Message_conversation_id_Conversation",
+      "startTableId": "CS_8687499dadebe9cc372",
+      "startFieldId": "CS_aab8856d4039f48fa3b",
+      "endTableId": "CS_70b8a9a85d37edb2756",
+      "endFieldId": "CS_1dd78a3b25d2ce0ea78",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_aab8856d4039f48fa3b",
+          "endFieldId": "CS_1dd78a3b25d2ce0ea78"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "Cascade",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_d66d4af1fba6c379b0e",
+      "name": "fk_Message_sender_id_User",
+      "startTableId": "CS_8687499dadebe9cc372",
+      "startFieldId": "CS_43a69790a22ab3acaa2",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_43a69790a22ab3acaa2",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_1989014ca6db98c0960",
+      "name": "fk_Folder_house_id_House",
+      "startTableId": "CS_acf2085df6c0f0e2131",
+      "startFieldId": "CS_e53c264873c1ff40136",
+      "endTableId": "eZZqMUzIwWtdCqAccefbo",
+      "endFieldId": "CfayN4b3RyWjZZ_TWy71j",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_e53c264873c1ff40136",
+          "endFieldId": "CfayN4b3RyWjZZ_TWy71j"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_fc48074efe16dd2255a",
+      "name": "fk_Document_folder_id_Folder",
+      "startTableId": "CS_e78043a405bccbb11db",
+      "startFieldId": "CS_426470170ae6c0d7528",
+      "endTableId": "CS_acf2085df6c0f0e2131",
+      "endFieldId": "CS_85940e703d18588ec14",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_426470170ae6c0d7528",
+          "endFieldId": "CS_85940e703d18588ec14"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_f3b1135074bf2e5a007",
+      "name": "fk_Document_uploaded_by_id_User",
+      "startTableId": "CS_e78043a405bccbb11db",
+      "startFieldId": "CS_dbf27f6341a447785e2",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_dbf27f6341a447785e2",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_47a9016d8dafd7f89cd",
+      "name": "fk_Notification_house_id_House",
+      "startTableId": "CS_c212f445604e833ca85",
+      "startFieldId": "CS_6caae842e5ed10e52ab",
+      "endTableId": "eZZqMUzIwWtdCqAccefbo",
+      "endFieldId": "CfayN4b3RyWjZZ_TWy71j",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_6caae842e5ed10e52ab",
+          "endFieldId": "CfayN4b3RyWjZZ_TWy71j"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_77136dba9c5484f62da",
+      "name": "fk_Notification_user_id_User",
+      "startTableId": "CS_c212f445604e833ca85",
+      "startFieldId": "CS_82d17c1ac1d244c3054",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_82d17c1ac1d244c3054",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_0170343a0051ab6491a",
+      "name": "fk_ActivityLog_house_id_House",
+      "startTableId": "CS_4e031e14cdd563b7ae8",
+      "startFieldId": "CS_ea585b2bd94efc0b38c",
+      "endTableId": "eZZqMUzIwWtdCqAccefbo",
+      "endFieldId": "CfayN4b3RyWjZZ_TWy71j",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_ea585b2bd94efc0b38c",
+          "endFieldId": "CfayN4b3RyWjZZ_TWy71j"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    },
+    {
+      "id": "CS_d3ec6914b2483155f14",
+      "name": "fk_ActivityLog_actor_id_User",
+      "startTableId": "CS_4e031e14cdd563b7ae8",
+      "startFieldId": "CS_1cda5e3e9ef46e6a8b5",
+      "endTableId": "63ZHg5aQo8apazBQfaSlV",
+      "endFieldId": "6L49DpT5IIwcv0Ba6S5fm",
+      "cardinality": "many_to_one",
+      "fields": [
+        {
+          "startFieldId": "CS_1cda5e3e9ef46e6a8b5",
+          "endFieldId": "6L49DpT5IIwcv0Ba6S5fm"
+        }
+      ],
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "color": "#808080"
+    }
+  ],
+  "subjectAreas": [
+    {
+      "id": 1,
+      "name": "01 · UTILISATEURS & COLOCATIONS",
+      "x": 25,
+      "y": 35,
+      "width": 2010,
+      "height": 840,
+      "color": "#F4EAF7",
+      "locked": false
+    },
+    {
+      "id": 2,
+      "name": "02 · FINANCES",
+      "x": 25,
+      "y": 985,
+      "width": 1160,
+      "height": 755,
+      "color": "#EFF9EE",
+      "locked": false
+    },
+    {
+      "id": 3,
+      "name": "03 · TÂCHES MÉNAGÈRES",
+      "x": 1215,
+      "y": 977.6343191271907,
+      "width": 1235.1410627475607,
+      "height": 762.3656808728093,
+      "color": "#FFF7E3",
+      "locked": false
+    },
+    {
+      "id": 4,
+      "name": "04 · COURSES",
+      "x": 2466.3153627613456,
+      "y": 977.5674157426513,
+      "width": 894.6009438814253,
+      "height": 757.3786838665976,
+      "color": "#F0FAF2",
+      "locked": false
+    },
+    {
+      "id": 5,
+      "name": "05 · CALENDRIER",
+      "x": 3405.916306642771,
+      "y": 979.9460996092489,
+      "width": 825,
+      "height": 755,
+      "color": "#EAF7FC",
+      "locked": false
+    },
+    {
+      "id": 6,
+      "name": "06 · MESSAGERIE",
+      "x": 25,
+      "y": 1830,
+      "width": 1253.176466671706,
+      "height": 534.9476774810992,
+      "color": "#FCEFF0",
+      "locked": false
+    },
+    {
+      "id": 7,
+      "name": "07 · DOCUMENTS",
+      "x": 1292.6161820738523,
+      "y": 1830,
+      "width": 832.3838179261477,
+      "height": 527.727819780026,
+      "color": "#F4F0FF",
+      "locked": false
+    },
+    {
+      "id": 8,
+      "name": "08 · NOTIFICATIONS & HISTORIQUE",
+      "x": 2170,
+      "y": 1830,
+      "width": 879.4482226683458,
+      "height": 561.4204890517012,
+      "color": "#F0F2F4",
+      "locked": false
+    }
+  ],
+  "database": "postgresql",
+  "types": [],
+  "enums": [],
+  "title": "ColocSync - MLD MASTER (23 tables)",
+  "lastModified": "2026-11-05T08:47:14.822Z",
+  "gistId": "",
+  "loadedFromGistId": ""
+}
